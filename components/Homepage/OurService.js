@@ -119,7 +119,7 @@ function OurService() {
                     (activeCardIndex === index && index !== 0)
                       ? "bg-ntl_black text-ntl_white"
                       : "bg-gradient-to-b from-[#F5F5F5] to-[#F3F3F4] text-ntl_black"
-                  } xsm:h-[330px] h-[400px] mx-2 rounded-3xl`}
+                  } xsm:h-[330px] h-[400px] mx-2 rounded-3xl transition-colors  duration-500 ease-in-out`}
                 >
                   <div className="">
                     <div className="flex justify-end">
