@@ -13,9 +13,12 @@ function Hero() {
       <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
         <div className="">
           <div className="landing_bg">
-            <div className="flex justify-between xsm:flex-col-reverse sm:flex-col-reverse pt-40 pb-16 px-5">
-              <div className="flex flex-row relative my-auto w-full">
-                <div className="absolute z-0  left-80 xsm:left-0 sm:left">
+            <div className="flex justify-between xsm:flex-col-reverse sm:flex-col-reverse pt-40 xsm:pt-16 pb-16 px-5">
+              <div className="flex flex-row relative my-auto w-full xsm:pt-10 sm:pt-10">
+                <div
+                  className="absolute z-0  left-80 xsm:left-40
+                 sm:left-40"
+                >
                   <Image
                     src={largehero2}
                     alt="large hero .png"
@@ -26,8 +29,8 @@ function Hero() {
                   <p className="text-ntl_orange">Fintech</p>
                   <p>Development</p>
                   <p>Platform</p>
-                  <button className="bg-ntl_black rounded-3xl text-ntl_white ">
-                    <p className="text-base px-10 py-5">Get in Touch</p>
+                  <button className="bg-ntl_black rounded-2xl text-ntl_white ">
+                    <p className="text-base py-3 px-6">get in touch</p>
                   </button>
                 </div>
               </div>
