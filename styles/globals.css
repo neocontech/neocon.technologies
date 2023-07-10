@@ -56,6 +56,28 @@
     width: 100%;
   }
 }
+/* footer */
+.footer_bg {
+  background-image: url(../public/assets/footer/largefooterasset.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  /* border-radius: 30px; */
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .footer_bg {
+    background-image: url(../public/assets/footer/smallfooterasset.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;
