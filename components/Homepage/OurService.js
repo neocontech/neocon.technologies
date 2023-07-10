@@ -10,31 +10,31 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs";
 const Service = [
   {
     id: 1,
-    name: "Fintech Solutions For Stock Market",
+    name: "Fintech Solutions For Stock Market1",
   },
   {
     id: 2,
-    name: "Fintech Solutions For Stock Market",
+    name: "Fintech Solutions For Stock Market2",
   },
   {
     id: 3,
-    name: "Fintech Solutions For Stock Market",
+    name: "Fintech Solutions For Stock Market3",
   },
   {
     id: 4,
-    name: "Fintech Solutions For Stock Market",
+    name: "Fintech Solutions For Stock Market4",
   },
   {
     id: 5,
-    name: "Fintech Solutions For Stock Market",
+    name: "Fintech Solutions For Stock Market5",
   },
   {
     id: 6,
-    name: "Fintech Solutions For Stock Market",
+    name: "Fintech Solutions For Stock Market6",
   },
   {
     id: 7,
-    name: "Fintech Solutions For Stock Market",
+    name: "Fintech Solutions For Stock Market7",
   },
 ];
 
@@ -42,6 +42,7 @@ function OurService() {
   const splideRef = useRef(null);
   const [visibleSlides, setVisibleSlides] = useState(5);
   const [perPage, setPerPage] = useState(5);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,57 +88,68 @@ function OurService() {
     interval: 2000,
     arrows: false,
     pagination: false,
+    on: {
+      moved: (newIndex) => {
+        setActiveCardIndex(newIndex);
+      },
+    },
   };
 
   return (
-    <>
-      <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
-        <div className="">
-          <div className="flex justify-between">
-            <div className="flex flex-row">
-              <BiSquareRounded />
-              <p>Our Service</p>
-            </div>
-            <FaArrowRight onClick={handleNextSlide} />
+    <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
+      <div className="">
+        <div className="flex justify-between">
+          <div className="flex flex-row">
+            <BiSquareRounded />
+            <p>Our Service</p>
           </div>
-          {/* card */}
-          <div className="py-10">
-            <Splide
-              options={splideOptions}
-              ref={splideRef}
-            >
-              {Service.map((service,index) => (
-                <SplideSlide key={index}>
-                  <div className="bg-gradient-to-b from-[#F5F5F5] to-[#F3F3F4] xsm:h-[330px] h-[400px] mx-2 rounded-3xl">
-                    <div className="">
-                      <div className="flex justify-end">
-                        <button className="flex flex-row pr-10 pt-4">
-                          <p className="mx-4">View More</p>
-                          <BsFillArrowRightCircleFill className="my-auto" />
-                        </button>
+          <FaArrowRight onClick={handleNextSlide} />
+        </div>
+        {/* card */}
+        <div className="py-10">
+          <Splide
+            options={splideOptions}
+            ref={splideRef}
+            onMoved={(splide) => setActiveCardIndex(splide.index)}
+          >
+            {Service.map((service, index) => (
+              <SplideSlide key={index}>
+                <div
+                  className={`${
+                    (activeCardIndex === index && index !== 0)
+                      ? "bg-ntl_black text-ntl_white"
+                      : "bg-gradient-to-b from-[#F5F5F5] to-[#F3F3F4] text-ntl_black"
+                  } xsm:h-[330px] h-[400px] mx-2 rounded-3xl`}
+                >
+                  <div className="">
+                    <div className="flex justify-end">
+                      <button className="flex flex-row pr-10 pt-4">
+                        <p className="mx-4">View More</p>
+                        <BsFillArrowRightCircleFill className="my-auto" />
+                      </button>
+                    </div>
+                    <div className="relative">
+                      <div className="absolute top-40 bottom-0 right-0 z-20">
+                        <Image
+                          src={Servicebg}
+                          alt="Service bg .png"
+                          className="w-auto hu-auto"
+                        />
                       </div>
-                      <div className="relative">
-                        <div className="absolute top-40  bottom-0 right-0 z-20">
-                          <Image
-                            src={Servicebg}
-                            alt="Service bg .png"
-                            className="w-auto hu-auto"
-                          />
-                        </div>
-                        <div className="z-30 absolute top-32 xsm:top-20 bottom-0">
-                          <p className="text-text_40 font-medium leading-tight  px-10 xsm:px-0 xsm:pl-10 xsm:pr-16">{service.name}</p>
-                        </div>
-                        
+                      <div className="z-30 absolute top-32 xsm:top-20 bottom-0">
+                        <p className="text-text_40 font-medium leading-tight px-10 xsm:px-0 xsm:pl-10 xsm:pr-16">
+                          {service.name}
+                        </p>
                       </div>
                     </div>
                   </div>
-                </SplideSlide>
-              ))}
-            </Splide>
-          </div>
+                </div>
+              </SplideSlide>
+            ))}
+          </Splide>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
