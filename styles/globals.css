@@ -33,6 +33,28 @@
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 900;
 }
+
+/* hero section home page */
+.landing_bg {
+  background-image: url(../public/assets/homepage/largeheroasset.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .landing_bg {
+    background-image: url(../public/assets/homepage/largeheroasset.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;
