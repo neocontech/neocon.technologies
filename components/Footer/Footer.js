@@ -120,13 +120,9 @@ function Footer() {
             <div className="flex justify-center pt-5">
               <p className="text-base font-regular text-ntl_gray_2 ">
                 © Copyright 2023{" "}
-                <span className="text-ngl_orange"> NEOCON</span> All rights
+                <span className="text-ntl_orange"> NEOCON</span> All rights
                 reserved
               </p>
-              {/* <div className="text-base font-regular text-ngl_gray_2 flex flex-row xsm:pb-3 sm:pb-3">
-              <p>Privacy Policy</p>
-              <p className="mx-5">Terms & Condition</p>
-            </div> */}
             </div>
           </div>
         </div>
