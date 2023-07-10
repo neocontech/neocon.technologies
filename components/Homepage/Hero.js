@@ -4,8 +4,36 @@ import Image from "next/image";
 import largehero2 from "../../public/assets/homepage/largehomeheroasset2.png";
 import largeHomehero from "../../public/assets/homepage/largehomeheroasset.png";
 // import smallhero2 from "../../public/assets/homepage/smallhomeheroasset2.png";
-// import Partner1 from "../../public/assets/homepage/kabirlogo.png";
-// import Partner1 from "../../public/assets/homepage/ucblogo.png";
+import Partner1 from "../../public/assets/homepage/kabirlogo.png";
+import Partner2 from "../../public/assets/homepage/ucblogo.png";
+import ImageMarquee from "./ImageMarquee";
+const images = [
+  {
+    id: 1,
+    image: Partner1,
+  },
+  {
+    id: 2,
+    image: Partner2,
+  },
+  {
+    id: 3,
+    image: Partner1,
+  },
+  {
+    id: 4,
+    image: Partner2,
+  },
+  {
+    id: 5,
+    image: Partner1,
+  },
+  {
+    id: 6,
+    image: Partner2,
+  },
+  // Add more image URLs as needed
+];
 
 function Hero() {
   return (
@@ -47,6 +75,7 @@ function Hero() {
               Stock Brokerage House <br />
               and Enterprise Companies:
             </p>
+            <ImageMarquee images={images} />
           </div>
         </div>
       </div>

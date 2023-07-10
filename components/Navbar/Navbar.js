@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <>
       <div className="sticky z-50 top-0 left-0 right-0 w-full">
-        <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5 bg-ngl_white/60 backdrop-blur-sm backdrop-filter">
+        <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5 bg-ntl_white/60  backdrop-blur-sm backdrop-filter">
           <div className="py-5">
             <div className="flex justify-between">
               <Link href="/" className="cursor-pointer">
