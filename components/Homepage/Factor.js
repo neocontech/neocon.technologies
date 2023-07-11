@@ -19,69 +19,82 @@ function Factor() {
             </p>
           </div>
           <div>
-            <div className="flex grid-cols-3 gap-6">
-              <div className="flex flex-col w-full h-full  bg-gradient-to-b from-[#F5F5F5] to-[#F3F3F4]  rounded-3xl">
-                <div className="p-5">
-                  <p className="text-text_32 font-semibold text-ntl_black leading-none">
-                    Customers <br />
-                    <span className="text-ntl_orange"> First</span>
-                  </p>
-                  <p className="text-base font-normal">
-                    At our company, we put our customers first. We understand
-                    that the success of our business depends on the satisfaction
-                    of our clients.
-                  </p>
-                </div>
-                <div className="mx-auto">
-                  <Image
-                    src={Customer}
-                    alt="factor image .png"
-                    className="w-auto h-auto"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col-reverse w-full h-full  bg-gradient-to-b from-[#F5F5F5] to-[#F3F3F4]  rounded-3xl mx-5">
-                <div className="p-5">
-                  <p className="text-text_32 font-semibold text-ntl_black leading-none">
-                    Amazing
-                    <br />
-                    <span className="text-ntl_orange"> People</span>
-                  </p>
-                  <p className="text-base font-normal">
-                    Our team is made up of some of the best and brightest minds
-                    in the industry. Our developers, designers, Marketer and
-                    project managers have years of experience and are experts in
-                    their respective fields.
-                  </p>
-                </div>
-                <div className="mx-auto">
-                  <Image
-                    src={People}
-                    alt="factor image .png"
-                    className="w-auto h-auto"
-                  />
+            <div className="flex grid-cols-3 gap-6 h-full xsm:overflow-x-scroll sm:overflow-x-scroll xsm:overflow-hidden sm:overflow-hidden">
+              <div className="w-full h-[600] xsm:h-full sm:h-full rounded-3xl factor_bg xsm:min-w-full sm:min-w-full">
+                <div className="flex flex-col">
+                  <div className="p-5">
+                    <p className="text-text_32 font-semibold text-ntl_black leading-none">
+                      Customers <br />
+                      <span className="text-ntl_orange"> First</span>
+                    </p>
+                    <p className="text-base font-normal">
+                      At our company, we put our customers first. We understand
+                      that the success of our business depends on the
+                      satisfaction of our clients.
+                    </p>
+                  </div>
+                  <div className="mx-auto ">
+                    <div className=" ">
+                      <Image
+                        src={Customer}
+                        alt="factor image .png"
+                        className="w-auto h-auto"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-col w-full h-full  bg-gradient-to-b from-[#F5F5F5] to-[#F3F3F4]  rounded-3xl">
-                <div className="p-5">
-                  <p className="text-text_32 font-semibold text-ntl_black leading-none">
-                    Great
-                    <br />
-                    <span className="text-ntl_orange"> Support</span>
-                  </p>
-                  <p className="text-base font-normal">
-                    We know that implementing new software solutions can be a
-                    daunting task, which is why we offer great support to our
-                    clients. Our team is always available to answer questions,
-                    provide training, and troubleshoot any issues.
-                  </p>
+
+              <div className="w-full h-[600] xsm:h-full sm:h-full rounded-3xl mx-5 factor_bg xsm:min-w-full sm:min-w-full">
+                <div className="flex flex-col-reverse">
+                  <div className="">
+                    <div className="p-5 ">
+                      <p className="text-text_32 font-semibold text-ntl_black leading-none">
+                        Amazing
+                        <br />
+                        <span className="text-ntl_orange"> People</span>
+                      </p>
+                      <p className="text-base font-normal">
+                        Our team is made up of some of the best and brightest
+                        minds in the industry. Our developers, designers,
+                        Marketer and project managers have years of experience
+                        and are experts in their respective fields.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mx-auto">
+                    <Image
+                      src={People}
+                      alt="factor image .png"
+                      className="w-auto h-auto"
+                    />
+                  </div>
                 </div>
-                <div className="mx-auto">
-                  <Image
-                    src={Support}
-                    alt="factor image .png"
-                    className="w-auto h-auto"
-                  />
+              </div>
+              <div className="w-full h-[600] xsm:h-full sm:h-full rounded-3xl factor_bg xsm:min-w-full sm:min-w-full">
+                <div className="flex flex-col ">
+                  <div className="p-5">
+                    <p className="text-text_32 font-semibold text-ntl_black leading-none">
+                      Great
+                      <br />
+                      <span className="text-ntl_orange"> Support</span>
+                    </p>
+                    <p className="text-base font-normal">
+                      We know that implementing new software solutions can be a
+                      daunting task, which is why we offer great support to our
+                      clients. Our team is always available to answer questions,
+                      provide training, and troubleshoot any issues.
+                    </p>
+                  </div>
+                  <div className="mx-auto">
+                    <div className="">
+                      <Image
+                        src={Support}
+                        alt="factor image .png"
+                        className="w-auto h-auto"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
