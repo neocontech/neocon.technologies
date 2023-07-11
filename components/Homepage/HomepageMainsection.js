@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import OurService from "./OurService";
 import WhoWeAre from "./WhoWeAre";
 import Factor from "./Factor";
+import Technology from "./Technology";
 
 function HomepageMainsection() {
   return (
@@ -11,6 +12,7 @@ function HomepageMainsection() {
       <OurService />
       <WhoWeAre />
       <Factor />
+      <Technology/>
     </>
   );
 }
