@@ -11,9 +11,9 @@ function Factor() {
     <>
       <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
         <div className="pb-10">
-          <div className="flex flex-row">
-            <BiSquareRounded className="my-auto text-ntl_orange" />
-            <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5">
+          <div className="flex flex-row pb-5">
+            <BiSquareRounded className="my-auto xsm:mt-0 sm:mt-0 text-ntl_orange xsm:text-2xl sm:text-2xl" />
+            <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5 leading-none">
               Factors that make us
               <span className="text-ntl_orange"> best option</span> for you are
             </p>
@@ -23,7 +23,7 @@ function Factor() {
               <div className="w-full h-[600] xsm:h-full sm:h-full rounded-3xl factor_bg xsm:min-w-full sm:min-w-full">
                 <div className="flex flex-col">
                   <div className="p-5">
-                    <p className="text-text_32 font-semibold text-ntl_black leading-none">
+                    <p className="text-text_32 font-semibold text-ntl_black leading-none pb-2">
                       Customers <br />
                       <span className="text-ntl_orange"> First</span>
                     </p>
@@ -49,7 +49,7 @@ function Factor() {
                 <div className="flex flex-col-reverse">
                   <div className="">
                     <div className="p-5 ">
-                      <p className="text-text_32 font-semibold text-ntl_black leading-none">
+                      <p className="text-text_32 font-semibold text-ntl_black leading-none pb-2">
                         Amazing
                         <br />
                         <span className="text-ntl_orange"> People</span>
@@ -74,7 +74,7 @@ function Factor() {
               <div className="w-full h-[600] xsm:h-full sm:h-full rounded-3xl factor_bg xsm:min-w-full sm:min-w-full">
                 <div className="flex flex-col ">
                   <div className="p-5">
-                    <p className="text-text_32 font-semibold text-ntl_black leading-none">
+                    <p className="text-text_32 font-semibold text-ntl_black leading-none pb-2">
                       Great
                       <br />
                       <span className="text-ntl_orange"> Support</span>
