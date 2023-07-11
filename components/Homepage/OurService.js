@@ -97,16 +97,18 @@ function OurService() {
 
   return (
     <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
-      <div className="">
+      <div className="pb-10">
         <div className="flex justify-between">
           <div className="flex flex-row">
-            <BiSquareRounded />
-            <p>Our Service</p>
+            <BiSquareRounded className="my-auto text-ntl_orange"/>
+            <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5">
+              Our <span className="text-ntl_orange"> Service</span>
+            </p>
           </div>
-          <FaArrowRight onClick={handleNextSlide} />
+          <FaArrowRight onClick={handleNextSlide} className="my-auto text-ntl_orange text-lg"/>
         </div>
         {/* card */}
-        <div className="py-10">
+        <div >
           <Splide
             options={splideOptions}
             ref={splideRef}
@@ -116,7 +118,7 @@ function OurService() {
               <SplideSlide key={index}>
                 <div
                   className={`${
-                    (activeCardIndex === index && index !== 0)
+                    activeCardIndex === index && index !== 0
                       ? "bg-ntl_black text-ntl_white"
                       : "bg-gradient-to-b from-[#F5F5F5] to-[#F3F3F4] text-ntl_black"
                   } xsm:h-[330px] h-[400px] mx-2 rounded-3xl transition-colors  duration-500 ease-in-out`}
@@ -125,7 +127,7 @@ function OurService() {
                     <div className="flex justify-end">
                       <button className="flex flex-row pr-10 pt-4">
                         <p className="mx-4">View More</p>
-                        <BsFillArrowRightCircleFill className="my-auto" />
+                        <BsFillArrowRightCircleFill className="my-auto text-2xl" />
                       </button>
                     </div>
                     <div className="relative">
