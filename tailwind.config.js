@@ -31,6 +31,7 @@ module.exports = {
       text_40: "40px",
       text_32: "32px",
       text_26: "26px",
+      text_28: "28px",
       xsm: "12px",
       sm: "14px",
       base: "16px",
@@ -48,5 +49,8 @@ module.exports = {
       "2xl": { min: "1677px" },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    // ...
+  ],
 };
