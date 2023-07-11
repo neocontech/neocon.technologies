@@ -68,9 +68,9 @@ function Tabs({ tabs }) {
                   {tab.content.map((image, index) => (
                     <div
                       key={index}
-                      className=" rounded-3xl w-full bg-gradient-to-r from-[#F5F5F5] to-[#F3F3F4]  "
+                      className=" rounded-3xl w-full feedback_bg"
                     >
-                      <div className="feedback_bg">
+                      <div className="">
                         <div className="p-6">
                           <Image
                             src={image.src}
