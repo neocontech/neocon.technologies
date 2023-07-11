@@ -14,9 +14,9 @@ function WhoWeAre() {
             </p>
           </div>
           <div className="flex justify-between xsm:flex-col sm:flex-col">
-            <div className="w-full">
-              <div className="grid grid-cols-2 gap-6 xsm:grid-cols-1 sm:grid-cols-1 text-base text-ntl_black">
-                <div className="col-span-2">
+            <div className="w-full my-auto">
+              <div className="grid grid-cols-2 gap-6 xsm:grid-cols-1 sm:grid-cols-1 text-base text-ntl_black text-justify">
+                <div className="col-span-2 xsm:col-span-1 sm:col-span-1">
                   <p>
                     Lorem ipsum dolor sit amet consectetur. Tellus pellentesque
                     vitae varius lorem vulputate quam non. Etiam proin iaculis
