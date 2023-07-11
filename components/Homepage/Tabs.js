@@ -70,7 +70,7 @@ function Tabs({ tabs }) {
                       key={index}
                       className=" rounded-3xl w-full bg-gradient-to-r from-[#F5F5F5] to-[#F3F3F4]  "
                     >
-                      <div className="tech_bg">
+                      <div className="feedback_bg">
                         <div className="p-6">
                           <Image
                             src={image.src}
