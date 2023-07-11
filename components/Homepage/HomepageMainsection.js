@@ -4,6 +4,7 @@ import OurService from "./OurService";
 import WhoWeAre from "./WhoWeAre";
 import Factor from "./Factor";
 import Technology from "./Technology";
+import Feedback from "./Feedback";
 
 function HomepageMainsection() {
   return (
@@ -12,7 +13,8 @@ function HomepageMainsection() {
       <OurService />
       <WhoWeAre />
       <Factor />
-      <Technology/>
+      <Technology />
+      <Feedback />
     </>
   );
 }
