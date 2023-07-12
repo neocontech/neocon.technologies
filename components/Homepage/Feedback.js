@@ -70,16 +70,16 @@ function Feedback() {
         <div className="pb-10">
           <div className="flex flex-row pb-5">
             <BiSquareRounded className="my-auto text-ntl_orange" />
-            <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5">
+            <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5 leading-none">
               Customers <span className="text-ntl_orange"> feedback</span>
             </p>
           </div>
-          <div>
+          
             <div>
               <Splide options={splideOptions}>
                 {FeedbackList.map((feed, index) => (
                   <SplideSlide key={index}>
-                    <div className="py-10 h-full">
+                    <div className=" h-full">
                       <div className="flex flex-col p-5 rounded-3xl feedback_bg mx-5 xsm:mx-2 h-full text-center">
                         <div className="flex flex-col text-center mx-auto">
                           <Image
@@ -120,7 +120,7 @@ function Feedback() {
                 ))}
               </Splide>
             </div>
-          </div>
+          
         </div>
       </div>
     </>

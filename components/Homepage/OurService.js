@@ -100,15 +100,18 @@ function OurService() {
       <div className="pb-10">
         <div className="flex justify-between">
           <div className="flex flex-row">
-            <BiSquareRounded className="my-auto text-ntl_orange"/>
+            <BiSquareRounded className="my-auto text-ntl_orange" />
             <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5">
               Our <span className="text-ntl_orange"> Service</span>
             </p>
           </div>
-          <FaArrowRight onClick={handleNextSlide} className="my-auto text-ntl_orange text-lg"/>
+          <FaArrowRight
+            onClick={handleNextSlide}
+            className="my-auto text-ntl_orange text-lg"
+          />
         </div>
         {/* card */}
-        <div >
+        <div>
           <Splide
             options={splideOptions}
             ref={splideRef}

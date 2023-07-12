@@ -92,6 +92,12 @@
   background-position: center center;
   background-size: cover;
 }
+.case_bg {
+  background-image: url(../public/assets/homepage/casestudybtnbg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
 
 /* :root {
   --max-width: 1100px;

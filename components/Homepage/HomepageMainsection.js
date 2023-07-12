@@ -6,6 +6,7 @@ import Factor from "./Factor";
 import Technology from "./Technology";
 import Feedback from "./Feedback";
 import Contact from "./Contact";
+import CaseStudy from "./CaseStudy";
 
 function HomepageMainsection() {
   return (
@@ -16,6 +17,7 @@ function HomepageMainsection() {
       <Factor />
       <Technology />
       <Feedback />
+      <CaseStudy />
       <Contact />
     </>
   );
