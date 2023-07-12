@@ -15,18 +15,23 @@ module.exports = {
       },
     },
     colors: {
-      ngl_black: "#262626",
+      ntl_black: "#262626",
       ngl_gray: "#707070",
-      ngl_gray_2: "#D0D5DD",
+      ntl_gray_2: "#D0D5DD",
       ngl_gray_3: "#757E95",
-      ngl_white: "#Ffffff",
+      ntl_white: "#Ffffff",
       ngl_white_1: "#FAFAFA",
       ngl_white_2: "#FFF8F6",
-      ngl_orange: "#FE3B00",
+      ntl_orange: "#FE3B00",
     },
     fontSize: {
-      text_56: "56px",
+      text_84: "84px",
       text_51: "51px",
+      text_41: "41px",
+      text_40: "40px",
+      text_32: "32px",
+      text_26: "26px",
+      text_28: "28px",
       xsm: "12px",
       sm: "14px",
       base: "16px",
@@ -34,10 +39,6 @@ module.exports = {
       xl: "20px",
       "2xl": "24px",
       "3xl": "36px",
-      "32xl": "32px",
-      "40xl": "40px",
-      "41xl": "41px",
-      "48xl": "48px",
     },
 
     screens: {
@@ -48,5 +49,8 @@ module.exports = {
       "2xl": { min: "1677px" },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    // ...
+  ],
 };

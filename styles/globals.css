@@ -33,6 +33,78 @@
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 900;
 }
+
+/* hero section home page */
+.landing_bg {
+  background-image: url(../public/assets/homepage/largeheroasset.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  border-radius: 30px;
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .landing_bg {
+    background-image: url(../public/assets/homepage/smalllandingheroasset.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+/* footer */
+.footer_bg {
+  background-image: url(../public/assets/footer/largefooterasset.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  /* border-radius: 30px; */
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .footer_bg {
+    background-image: url(../public/assets/footer/smallfooterasset.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+/* factor*/
+.factor_bg {
+  background-image: url(../public/assets/homepage/Factorbg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+/* factor*/
+.feedback_bg {
+  background-image: url(../public/assets/homepage/feedbackbg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.feedback_bg_b {
+  background-image: url(../public/assets/homepage/feedbackbg_b.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.case_bg {
+  background-image: url(../public/assets/homepage/casestudybtnbg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;
