@@ -80,11 +80,11 @@ function CaseStudy() {
                               <div className="text-text_40 xsm:text-text_32 sm:text-text_32 font-medium text-ntl_black leading-none w-9/12 xsm:w-full sm:w-full my-auto">
                                 <p>{casestudy.name}</p>
                               </div>
-                              <div className="w-3/12 xsm:w-full sm:w-full">
+                              <div className="w-3/12 xsm:w-full sm:w-full my-auto">
                                 <Image
                                   src={casestudy.image}
                                   alt="case study .png"
-                                  className="w-auto h-auto mb-0 pb-0"
+                                  className="w-auto h-auto mb-0 pb-0 my-auto"
                                 />
                               </div>
                             </div>

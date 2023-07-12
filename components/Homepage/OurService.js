@@ -10,31 +10,31 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs";
 const Service = [
   {
     id: 1,
-    name: "Fintech Solutions For Stock Market1",
+    name: "Fintech Solutions For Stock Market",
   },
   {
     id: 2,
-    name: "Fintech Solutions For Stock Market2",
+    name: "Fintech Solutions For Stock Market",
   },
   {
     id: 3,
-    name: "Fintech Solutions For Stock Market3",
+    name: "Fintech Solutions For Stock Market",
   },
   {
     id: 4,
-    name: "Fintech Solutions For Stock Market4",
+    name: "Fintech Solutions For Stock Market",
   },
   {
     id: 5,
-    name: "Fintech Solutions For Stock Market5",
+    name: "Fintech Solutions For Stock Market",
   },
   {
     id: 6,
-    name: "Fintech Solutions For Stock Market6",
+    name: "Fintech Solutions For Stock Market",
   },
   {
     id: 7,
-    name: "Fintech Solutions For Stock Market7",
+    name: "Fintech Solutions For Stock Market",
   },
 ];
 
@@ -141,7 +141,7 @@ function OurService() {
                           className="w-auto hu-auto"
                         />
                       </div>
-                      <div className="z-30 absolute top-32 xsm:top-20 bottom-0">
+                      <div className="z-30 absolute top-32 2xl:top-20 xsm:top-20 bottom-0">
                         <p className="text-text_40 font-medium leading-tight px-10 xsm:px-0 xsm:pl-10 xsm:pr-16">
                           {service.name}
                         </p>

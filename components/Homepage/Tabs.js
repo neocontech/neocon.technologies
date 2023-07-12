@@ -25,7 +25,7 @@ function Tabs({ tabs }) {
   };
 
   return (
-    <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
+    <div>
       <div>
         <ul
           className="flex flex-row text-2xl font-semibold xsm:overflow-x-scroll sm:overflow-x-scroll scrollbar-hide"
