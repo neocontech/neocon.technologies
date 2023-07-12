@@ -4,6 +4,7 @@ import {
   BsFillArrowRightCircleFill,
   BsFillArrowDownRightCircleFill,
 } from "react-icons/bs";
+import { BiSquareRounded } from "react-icons/bi";
 import Image from "next/image";
 import Web from "../../public/assets/homepage/Web.png";
 import Mobile from "../../public/assets/homepage/mobile.png";
@@ -96,6 +97,12 @@ function OurProducts() {
     <>
       <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
         <div className="pb-10">
+        <div className="flex flex-row pb-5">
+            <BiSquareRounded className="my-auto text-ntl_orange" />
+            <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5">
+              Our <span className="text-ntl_orange"> Products</span>
+            </p>
+          </div>
           <div>
             <ul
               className="flex flex-row text-2xl font-semibold w-full overflow-x-scroll scrollbar-hide"
