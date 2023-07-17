@@ -16,7 +16,7 @@ module.exports = {
     },
     colors: {
       ntl_black: "#262626",
-      ngl_gray: "#707070",
+      ntl_gray: "#757E95",
       ntl_gray_2: "#D0D5DD",
       ngl_gray_3: "#757E95",
       ntl_white: "#Ffffff",
@@ -27,11 +27,14 @@ module.exports = {
     fontSize: {
       text_84: "84px",
       text_51: "51px",
+      text_48: "48px",
       text_41: "41px",
       text_40: "40px",
+      text_36: "36px",
       text_32: "32px",
-      text_26: "26px",
       text_28: "28px",
+      text_26: "26px",
+      
       xsm: "12px",
       sm: "14px",
       base: "16px",
