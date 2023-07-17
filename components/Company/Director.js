@@ -117,7 +117,7 @@ function Director({ data }) {
                         alt="director image"
                         width={300}
                         height={300}
-                        className="my-auto mx-auto rounded-lg w-auto h-auto"
+                        className="my-auto mx-auto rounded-lg w-auto h-auto 2xl:w-full xsm:w-full sm:w-full"
                       />
                     </div>
                   </div>

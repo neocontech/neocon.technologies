@@ -103,7 +103,7 @@ function Team({ data }) {
                         alt="team image"
                         width={300}
                         height={300}
-                        className="my-auto  rounded-lg w-auto h-auto border-2 border-ntl_orange "
+                        className="my-auto  rounded-lg w-auto h-auto 2xl:w-full xsm:w-full sm:w-full border-2 border-ntl_orange "
                       />
                     </div>
                   </div>
