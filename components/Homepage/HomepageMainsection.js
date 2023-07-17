@@ -16,9 +16,15 @@ function HomepageMainsection() {
       <OurService />
       <WhoWeAre />
       <OurProducts />
-      <Factor />
+      <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
+        <Factor />
+      </div>
+
       <Technology />
-      <Feedback />
+      <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
+       <Feedback />
+      </div>
+      
       <CaseStudy />
       <Contact />
     </>
