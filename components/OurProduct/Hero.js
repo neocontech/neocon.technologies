@@ -8,11 +8,11 @@ function Hero() {
           <div className="company_bg">
             <div className="px-5">
               <p className="text-base font-normal text-ntl_black pt-10">
-                Home/<span className="text-ntl_orange">Services</span>
+                Home/<span className="text-ntl_orange">Products</span>
               </p>
               <div className="pt-20 pb-5">
                 <p className="text-text_48 xsm:text-text_36 text-ntl_black font-semibold">
-                  Services
+                  Products
                 </p>
                 <p className="text-base text-ntl_gray">
                   At Neocon Technologies Limited, we offer a comprehensive range

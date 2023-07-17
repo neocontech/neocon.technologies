@@ -2,7 +2,7 @@ import Applayout from "@/components/Layout/Applayout";
 import ServiceMainSection from "@/components/OurService/ServiceMainSection";
 import React from "react";
 
-function service() {
+function services() {
   return (
     <>
       <Applayout>
@@ -12,4 +12,4 @@ function service() {
   );
 }
 
-export default service;
+export default services;

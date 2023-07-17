@@ -47,7 +47,7 @@ function Navbar() {
                     />
                     <p className="pl-2 font-medium">Company</p>
                   </Link>
-                  <Link href="/service" className="flex flex-row mx-5">
+                  <Link href="/services" className="flex flex-row mx-5">
                     <FiCircle
                       size={10}
                       className="my-auto text-xs text-ngl_orange"
