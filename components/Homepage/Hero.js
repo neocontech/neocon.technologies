@@ -1,9 +1,7 @@
 import React from "react";
 import Image from "next/image";
-// import smallhero from "../../public/assets/homepage/smallhoemheroasset.png";
 import largehero2 from "../../public/assets/homepage/largehomeheroasset2.png";
 import largeHomehero from "../../public/assets/homepage/largehomeheroasset.png";
-// import smallhero2 from "../../public/assets/homepage/smallhomeheroasset2.png";
 import Partner1 from "../../public/assets/homepage/kabirlogo.png";
 import Partner2 from "../../public/assets/homepage/ucblogo.png";
 import ImageMarquee from "./ImageMarquee";
@@ -44,7 +42,7 @@ function Hero() {
             <div className="flex justify-between xsm:flex-col-reverse sm:flex-col-reverse pt-40 xsm:pt-16 pb-16 px-5">
               <div className="flex flex-row relative my-auto w-full xsm:pt-10 sm:pt-10">
                 <div
-                  className="absolute z-0  left-80 xsm:left-40
+                  className="absolute z-0  right-0 2xl:-right-24 xsm:left-40
                  sm:left-40"
                 >
                   <Image
@@ -54,11 +52,11 @@ function Hero() {
                   />
                 </div>
                 <div className="text-text_84 xsm:text-text_41 sm:text-text_41 text-ntl_black font-semibold leading-tight z-10 ">
-                  <p className="text-ntl_orange">Fintech</p>
-                  <p>Development</p>
-                  <p>Platform</p>
+                  <p className="text-ntl_orange">Empowering </p>
+                  <p>Stock Market</p>
+                  <p>Success</p>
                   <button className="bg-ntl_black rounded-2xl text-ntl_white ">
-                    <p className="text-base py-3 px-6">get in touch</p>
+                    <p className="text-base py-3 px-6">Get in touch</p>
                   </button>
                 </div>
               </div>
@@ -71,9 +69,10 @@ function Hero() {
               </div>
             </div>
             <p className="text-sm text-ntl_black font-medium px-5 pb-5">
-              Trusted by over <span className="text-ntl_orange"> 100+</span>
-              Stock Brokerage House <br />
-              and Enterprise Companies:
+              Trusted by over
+              <span className="text-ntl_orange"> 30+</span>
+              stock brokerage houses <br />
+              and enterprise companies.
             </p>
             <ImageMarquee images={images} />
           </div>

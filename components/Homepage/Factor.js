@@ -9,13 +9,13 @@ import { BiSquareRounded } from "react-icons/bi";
 function Factor() {
   return (
     <>
-      <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
+      <div className="">
         <div className="pb-10">
           <div className="flex flex-row pb-5">
             <BiSquareRounded className="my-auto xsm:mt-0 sm:mt-0 text-ntl_orange xsm:text-2xl sm:text-2xl" />
             <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5 leading-none">
-              Factors that make us
-              <span className="text-ntl_orange"> best option</span> for you are
+              Why is Neocon the best for
+              <span className="text-ntl_orange"> best</span> you?
             </p>
           </div>
           <div>
@@ -28,9 +28,13 @@ function Factor() {
                       <span className="text-ntl_orange"> First</span>
                     </p>
                     <p className="text-base font-normal">
-                      At our company, we put our customers first. We understand
-                      that the success of our business depends on the
-                      satisfaction of our clients.
+                      At Neocon Technologies, our customers are at the core of
+                      everything we do. We understand that your success is
+                      directly linked to our own, which is why we make it a
+                      priority to listen to your unique needs, challenges, and
+                      goals. By taking the time to understand your requirements,
+                      we can tailor our solutions to best meet your specific
+                      business objectives.
                     </p>
                   </div>
                   <div className="mx-auto ">
@@ -55,10 +59,14 @@ function Factor() {
                         <span className="text-ntl_orange"> People</span>
                       </p>
                       <p className="text-base font-normal">
-                        Our team is made up of some of the best and brightest
-                        minds in the industry. Our developers, designers,
-                        Marketer and project managers have years of experience
-                        and are experts in their respective fields.
+                        We take great pride in our team of amazing people who
+                        are passionate, skilled, and dedicated to delivering
+                        exceptional results. Our professionals possess deep
+                        industry knowledge, technical expertise, and a genuine
+                        enthusiasm for fintech innovation. They are not only
+                        adept at understanding the intricacies of the financial
+                        industry, but they also can think creatively and find
+                        unique solutions to complex challenges.
                       </p>
                     </div>
                   </div>
@@ -80,10 +88,14 @@ function Factor() {
                       <span className="text-ntl_orange"> Support</span>
                     </p>
                     <p className="text-base font-normal">
-                      We know that implementing new software solutions can be a
-                      daunting task, which is why we offer great support to our
-                      clients. Our team is always available to answer questions,
-                      provide training, and troubleshoot any issues.
+                      Neocon Technologies recognize the importance of providing
+                      great support to our clients. We understand that
+                      technology implementations and ongoing operations can
+                      sometimes come with questions or challenges, which is why
+                      our dedicated support team is always ready to assist you.
+                      Whether you have technical inquiries, need guidance, or
+                      require troubleshooting, our responsive support team is
+                      just a phone call or email away.
                     </p>
                   </div>
                   <div className="mx-auto">

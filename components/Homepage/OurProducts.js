@@ -15,7 +15,7 @@ import MobileS from "../../public/assets/homepage/mobileS.png";
 
 const tabs = [
   {
-    title: "OMS For Stock Market",
+    title: "OMS for the stock market",
     image: LaptopS,
     content: [
       { src: Web, alt: "Web" },
@@ -25,7 +25,7 @@ const tabs = [
     ],
   },
   {
-    title: "OMS For Stock Market2",
+    title: "ERP for the stock market",
     image: MobileS,
     content: [
       { src: Web, alt: "Web" },
@@ -35,37 +35,7 @@ const tabs = [
     ],
   },
   {
-    title: "OMS For Stock Market3",
-    image: LaptopS,
-    content: [
-      { src: Web, alt: "Web" },
-      { src: Mobile, alt: "Mobile" },
-      { src: Feature, alt: "Feature" },
-      { src: Trial, alt: "Trial" },
-    ],
-  },
-  {
-    title: "OMS For Stock Market3",
-    image: LaptopS,
-    content: [
-      { src: Web, alt: "Web" },
-      { src: Mobile, alt: "Mobile" },
-      { src: Feature, alt: "Feature" },
-      { src: Trial, alt: "Trial" },
-    ],
-  },
-  {
-    title: "OMS For Stock Market3",
-    image: LaptopS,
-    content: [
-      { src: Web, alt: "Web" },
-      { src: Mobile, alt: "Mobile" },
-      { src: Feature, alt: "Feature" },
-      { src: Trial, alt: "Trial" },
-    ],
-  },
-  {
-    title: "OMS For Stock Market3",
+    title: "AI Trade Bot for the stock market",
     image: LaptopS,
     content: [
       { src: Web, alt: "Web" },
@@ -97,7 +67,7 @@ function OurProducts() {
     <>
       <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
         <div className="pb-10">
-        <div className="flex flex-row pb-5">
+          <div className="flex flex-row pb-5">
             <BiSquareRounded className="my-auto text-ntl_orange" />
             <p className="text-text_51 xsm:text-text_32 sm:text-text_32 font-bold text-ntl_black pl-5">
               Our <span className="text-ntl_orange"> Products</span>
