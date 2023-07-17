@@ -47,19 +47,19 @@ function Navbar() {
                     />
                     <p className="pl-2 font-medium">Company</p>
                   </Link>
-                  <Link href="/business" className="flex flex-row mx-5">
+                  <Link href="/services" className="flex flex-row mx-5">
                     <FiCircle
                       size={10}
                       className="my-auto text-xs text-ngl_orange"
                     />
-                    <p className="pl-2 font-medium">Our Business</p>
+                    <p className="pl-2 font-medium">Services</p>
                   </Link>
-                  <Link href="/news" className="flex flex-row mx-5">
+                  <Link href="/products" className="flex flex-row mx-5">
                     <FiCircle
                       size={10}
                       className="my-auto text-xs text-ngl_orange"
                     />
-                    <p className="pl-2 font-medium">News Room</p>
+                    <p className="pl-2 font-medium">Products</p>
                   </Link>
                   <Link href="/contact-us" className="flex flex-row mx-5">
                     <FiCircle
@@ -76,11 +76,11 @@ function Navbar() {
                 <Link href="/company" className="block my-3 mx-5">
                   <p className="font-medium">Company</p>
                 </Link>
-                <Link href="/business" className="block my-3 mx-5">
-                  <p className="font-medium">Our Business</p>
+                <Link href="/service" className="block my-3 mx-5">
+                  <p className="font-medium">Services</p>
                 </Link>
-                <Link href="/news" className="block my-3 mx-5">
-                  <p className="font-medium">News Room</p>
+                <Link href="/products" className="block my-3 mx-5">
+                  <p className="font-medium">Products</p>
                 </Link>
                 <Link href="/contact-us" className="block my-3 mx-5">
                   <p className="font-medium">Contact Us</p>
