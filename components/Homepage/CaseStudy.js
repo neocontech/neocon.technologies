@@ -97,7 +97,7 @@ function CaseStudy() {
               </div>
               <div className="w-2/12 xsm:w-full sm:w-full xsm:mt-5 sm:mt-5">
                 <div className="case_bg rounded-3xl">
-                  <div className="text-sm text-ntl_white px-5 pb-7 pt-36 2xl:pt-44 2xl:pb-5 xsm:pt-20 sm:pt-5 ">
+                  <div className="text-sm text-ntl_white px-5 pb-10 pt-40  2xl:pt-44 2xl:pb-5 xsm:pt-20 sm:pt-5 ">
                     <p>click here to</p>
                     <p className="text-ntl_orange text-text_28">View All</p>
                     <div className="flex justify-between">
