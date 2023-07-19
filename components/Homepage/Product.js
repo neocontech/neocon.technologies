@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import {
@@ -15,7 +16,7 @@ import MobileS from "../../public/assets/homepage/mobileS.png";
 
 const tabs = [
   {
-    id: 0,
+    id: 1,
     title: "OMS for the stock market",
     image: LaptopS,
     content: [
@@ -26,7 +27,7 @@ const tabs = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     title: "ERP for the stock market",
     image: MobileS,
     content: [
@@ -37,7 +38,7 @@ const tabs = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "AI Trade Bot for the stock market",
     image: LaptopS,
     content: [
@@ -60,7 +61,9 @@ const splideOptions = {
 
 function Product() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const [numVisibleCards, setNumVisibleCards] = useState(3); 
+  const [activeViewMoreIndex, setActiveViewMoreIndex] = useState(0);
+
+  const [numVisibleCards, setNumVisibleCards] = useState(3);
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
@@ -79,6 +82,7 @@ function Product() {
   }, []);
   const handleCardClick = (index) => {
     setActiveCardIndex(index);
+    setActiveViewMoreIndex(index);
   };
 
   return (
@@ -98,14 +102,32 @@ function Product() {
                 >
                   <div className="p-6">
                     <div className="flex justify-end">
-                      <button className="flex flex-row ">
-                        <p className="mx-4">View More</p>
-                        {activeCardIndex === index ? (
-                          <BsFillArrowDownRightCircleFill className="my-auto mx-2" />
-                        ) : (
-                          <BsFillArrowRightCircleFill className="my-auto mx-2" />
-                        )}
-                      </button>
+                      <Link legacyBehavior href={`/products/${product.id}`}>
+                        <button className="flex flex-row">
+                          <p
+                            className={`mx-4 ${
+                              activeViewMoreIndex === index
+                                ? "text-ntl_orange"
+                                : ""
+                            }`}
+                          >
+                            {activeViewMoreIndex === index
+                              ? "Now Presenting"
+                              : "Click To View Feature"}
+                          </p>
+                          {activeCardIndex === index ? (
+                            <BsFillArrowDownRightCircleFill
+                              className={`my-auto mx-2 ${
+                                activeViewMoreIndex === index
+                                  ? "text-ntl_orange"
+                                  : ""
+                              }`}
+                            />
+                          ) : (
+                            <BsFillArrowRightCircleFill className="my-auto mx-2" />
+                          )}
+                        </button>
+                      </Link>
                     </div>
                     <div className="relative">
                       <div className="absolute bottom-0 top-0">
