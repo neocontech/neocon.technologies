@@ -71,9 +71,9 @@ function AllCaseStudy() {
     <>
       <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
         <div className="pb-10">
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center pb-10">
             <button
-              className={`mx-2 px-4 py-2 rounded-lg  ${getButtonStyle(
+              className={`mx-2 px-6 py-2 rounded-lg  ${getButtonStyle(
                 "all"
               )}`}
               onClick={() => handleFilterClick("all")}
@@ -90,7 +90,7 @@ function AllCaseStudy() {
             {uniqueTags.map((tag) => (
               <button
                 key={tag}
-                className={`mx-2 px-4 py-2 rounded-lg  ${getButtonStyle(
+                className={`mx-2 px-6 py-2 rounded-lg  ${getButtonStyle(
                   tag
                 )}`}
                 onClick={() => handleFilterClick(tag)}
