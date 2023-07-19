@@ -33,6 +33,7 @@ const tabs = [
       { src: Web, alt: "Web" },
       { src: Mobile, alt: "Mobile" },
       { src: Feature, alt: "Feature" },
+      { src: Trial, alt: "Trial" },
     ],
   },
   {
@@ -41,6 +42,7 @@ const tabs = [
     image: LaptopS,
     content: [
       { src: Feature, alt: "Feature" },
+      { src: Trial, alt: "Trial" },
       { src: Trial, alt: "Trial" },
     ],
   },
@@ -58,7 +60,23 @@ const splideOptions = {
 
 function Product() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [numVisibleCards, setNumVisibleCards] = useState(3); 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setNumVisibleCards(1);
+      } else {
+        setNumVisibleCards(3);
+      }
+    };
 
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Set initial number of visible cards
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const handleCardClick = (index) => {
     setActiveCardIndex(index);
   };
@@ -67,20 +85,20 @@ function Product() {
     <>
       <div>
         <div>
-          <Splide options={splideOptions}>
-            {tabs.map((service, index) => (
+          <Splide options={{ ...splideOptions, perPage: numVisibleCards }}>
+            {tabs.map((product, index) => (
               <SplideSlide key={index}>
                 <div
                   className={`${
                     activeCardIndex === index
                       ? "feedback_bg_b text-ntl_white"
                       : "feedback_bg text-ntl_black"
-                  } xsm:h-[330px] h-[400px] mx-2 rounded-3xl transition-colors duration-500 ease-in-out cursor-pointer`}
+                  } h-[300px]  mx-2 rounded-3xl transition-colors duration-500 ease-in-out cursor-pointer`}
                   onClick={() => handleCardClick(index)}
                 >
-                  <div className="">
+                  <div className="p-6">
                     <div className="flex justify-end">
-                      <button className="flex flex-row pr-10 pt-4">
+                      <button className="flex flex-row ">
                         <p className="mx-4">View More</p>
                         {activeCardIndex === index ? (
                           <BsFillArrowDownRightCircleFill className="my-auto mx-2" />
@@ -89,11 +107,20 @@ function Product() {
                         )}
                       </button>
                     </div>
-                    <div>
-                      <div className="z-30 absolute top-20 xsm:top-6 sm:top-6 bottom-0">
-                        <p className="text-text_40 font-medium leading-tight px-10 xsm:px-0 xsm:pl-10 xsm:pr-16">
-                          {service.title}
-                        </p>
+                    <div className="relative">
+                      <div className="absolute bottom-0 top-0">
+                        <div className="flex justify-between mt-10">
+                          <p className="text-text_40 font-medium leading-tight w-full">
+                            {product.title}
+                          </p>
+                          <div className="my-auto w-full">
+                            <Image
+                              src={product.image}
+                              alt="product image .png"
+                              className="w-auto h-auto mx-auto"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -112,7 +139,7 @@ function Product() {
             >
               <div className="grid grid-cols-4 xsm:grid-cols-1 sm:grid-cols-1 gap-2">
                 {tab.content.map((image, index) => (
-                  <div key={index} className="w-full">
+                  <div key={index} className="w-full mx-auto">
                     <Image
                       src={image.src}
                       alt={image.alt}

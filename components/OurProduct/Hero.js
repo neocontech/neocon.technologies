@@ -28,7 +28,7 @@ function Hero() {
               <div className="p-5 xsm:px-0 xsm:pl-5">
                 <div>
                   <div className="flex flex-row text-ntl_orange">
-                    <p>All Services</p>
+                    <p>All Products</p>
                     <BsFillArrowDownRightCircleFill className="my-auto mx-2" />
                   </div>
                 </div>
