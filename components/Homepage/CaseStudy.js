@@ -7,6 +7,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import Oms from "../../public/assets/homepage/Oms.png";
 import Ai from "../../public/assets/homepage/Ai.png";
+import Link from "next/link";
 const CaseList = [
   {
     id: 1,
@@ -96,16 +97,18 @@ function CaseStudy() {
                 </div>
               </div>
               <div className="w-2/12 xsm:w-full sm:w-full xsm:mt-5 sm:mt-5">
-                <div className="case_bg rounded-3xl">
-                  <div className="text-sm text-ntl_white px-5 pb-7 pt-36 2xl:pt-44 2xl:pb-5 xsm:pt-20 sm:pt-5 ">
-                    <p>click here to</p>
-                    <p className="text-ntl_orange text-text_28">View All</p>
-                    <div className="flex justify-between">
-                      <p>case studies</p>
-                      <FaArrowRight className="my-auto text-ntl_orange text-lg" />
+                <Link href="/casestudy">
+                  <div className="case_bg rounded-3xl">
+                    <div className="text-sm text-ntl_white px-5 pb-10 pt-40  2xl:pt-44 2xl:pb-5 xsm:pt-20 sm:pt-5 ">
+                      <p>click here to</p>
+                      <p className="text-ntl_orange text-text_28">View All</p>
+                      <div className="flex justify-between">
+                        <p>case studies</p>
+                        <FaArrowRight className="my-auto text-ntl_orange text-lg" />
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

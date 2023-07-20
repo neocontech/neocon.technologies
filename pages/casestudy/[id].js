@@ -27,7 +27,6 @@
 //   );
 // }
 
-
 import React from "react";
 import Image from "next/image";
 import Service1 from "../../public/assets/service/service1.png";
@@ -36,9 +35,10 @@ import Service3 from "../../public/assets/service/service3.png";
 import { useRouter } from "next/router";
 import Applayout from "@/components/Layout/Applayout";
 import SingleProduct from "@/components/OurProduct/SingleProduct";
+import SingleCasestudy from "@/components/OurCaseSudy/SingleCasestudy";
 
 
-const products = [
+const casestudys = [
   {
     id: 1,
     name: "OMS",
@@ -125,18 +125,19 @@ const products = [
   }
 ];
 
-export default function SingleProductPage() {
+export default function SingleCasestudyPage() {
   const router = useRouter();
   const { id } = router.query;
-  const product = products.find((s) => s.id === Number(id));
+  const casestudy = casestudys.find((s) => s.id === Number(id));
 
-  if (!product) {
-    return <div>product not found.</div>;
+  if (!casestudy) {
+    return <div>casestudy not found.</div>;
   }
 
   return (
     <Applayout>
-      <SingleProduct product={product} allProducts={products}/>
+      
+      <SingleCasestudy casestudy={casestudy} allCasestudys={casestudys}/>
       
     </Applayout>
   );

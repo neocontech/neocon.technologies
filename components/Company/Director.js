@@ -60,7 +60,7 @@ function Director({ data }) {
               <p className="text-text_41 xsm:text-3xl sm:text-3xl font-semibold text-ntl_black">
                 “Board of <span className="text-ntl_orange"> Director</span>
               </p>
-              <p className="text-base font-normal text-ntl_gray">
+              <p className="text-base font-normal text-ntl_gray text-justify">
               A board of directors of neocon technologies is responsible for setting the strategic direction, overseeing its management, and ensuring that it complies with applicable laws and regulations.
               </p>
             </div>
@@ -85,7 +85,7 @@ function Director({ data }) {
                       >
                         <div className="px-5 xsm:px-0 sm:px-0">
                           <div className="border-l-2 border-ntl_orange">
-                            <div className="text-base font-normal text-ntl_black p-2 mb-3">
+                            <div className="text-base font-normal text-ntl_black p-2 mb-3 text-justify">
                               {/* <div
                                 dangerouslySetInnerHTML={{
                                   __html: director.about,
