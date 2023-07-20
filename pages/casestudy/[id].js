@@ -26,3 +26,119 @@
 //     </>
 //   );
 // }
+
+import React from "react";
+import Image from "next/image";
+import Service1 from "../../public/assets/service/service1.png";
+import Service2 from "../../public/assets/service/service2.png";
+import Service3 from "../../public/assets/service/service3.png";
+import { useRouter } from "next/router";
+import Applayout from "@/components/Layout/Applayout";
+import SingleProduct from "@/components/OurProduct/SingleProduct";
+import SingleCasestudy from "@/components/OurCaseSudy/SingleCasestudy";
+
+
+const casestudys = [
+  {
+    id: 1,
+    name: "OMS",
+    content: "OMS for the stock market",
+    details: [
+      {
+        id: 0,
+        image: Service1,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+      {
+        id: 1,
+        image: Service2,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+      {
+        id: 2,
+        image: Service3,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "ERP solutions ",
+    content: "ERP solutions for the stock market content",
+    details: [
+      {
+        id: 0,
+        image: Service1,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+      {
+        id: 1,
+        image: Service2,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+      {
+        id: 2,
+        image: Service3,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "AI solutions ",
+    content: "AI solutions for the stock market content",
+    details: [
+      {
+        id: 0,
+        image: Service1,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+      {
+        id: 1,
+        image: Service2,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+      {
+        id: 2,
+        image: Service3,
+        header: " One Place.",
+        content:
+          "Lorem ipsum dolor sit amet consectetur. Donec vestibulum netus purus ut sodales orci a amet. Ipsum in risus consectetur viverra. Vitae mauris pellentesque fermentum metus. Diam id in ut neque magna.",
+      },
+    ],
+  }
+];
+
+export default function SingleCasestudyPage() {
+  const router = useRouter();
+  const { id } = router.query;
+  const casestudy = casestudys.find((s) => s.id === Number(id));
+
+  if (!casestudy) {
+    return <div>casestudy not found.</div>;
+  }
+
+  return (
+    <Applayout>
+      
+      <SingleCasestudy casestudy={casestudy} allCasestudys={casestudys}/>
+      
+    </Applayout>
+  );
+}
