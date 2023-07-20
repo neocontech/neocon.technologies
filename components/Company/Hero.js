@@ -39,7 +39,7 @@ function Hero() {
                 <p className="text-text_48 xsm:text-text_36 text-ntl_black font-semibold">
                   Company
                 </p>
-                <p className="text-base text-ntl_gray">
+                <p className="text-base text-ntl_gray text-justify">
                   At Neocon Technologies, we understand the unique challenges
                   faced by businesses operating in the stock market. We combine
                   our deep understanding of the industry with our expertise in

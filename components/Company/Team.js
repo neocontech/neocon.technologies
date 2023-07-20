@@ -41,7 +41,7 @@ function Team({ data }) {
               <p className="text-text_41 xsm:text-3xl sm:text-3xl font-semibold text-ntl_black">
                 “We are like a <span className="text-ntl_orange"> family</span>
               </p>
-              <p className="text-base font-normal text-ntl_gray">
+              <p className="text-base font-normal text-ntl_gray text-justify">
                 Neocon Technologies Limited takes pride in its exceptional
                 leadership team, driving innovation and spearheading the
                 company's success in providing cutting-edge solutions for the
@@ -72,7 +72,7 @@ function Team({ data }) {
                             {team.name}
                           </p>
                           <div>
-                            <div className="text-base font-normal text-ntl_black mb-3">
+                            <div className="text-base font-normal text-ntl_black mb-3 text-justify">
                               {/* <div
                                 dangerouslySetInnerHTML={{
                                   __html: team.about,

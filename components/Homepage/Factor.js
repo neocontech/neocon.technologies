@@ -27,7 +27,7 @@ function Factor() {
                       Customers <br />
                       <span className="text-ntl_orange"> First</span>
                     </p>
-                    <p className="text-base font-normal">
+                    <p className="text-base font-normal text-justify">
                       At Neocon Technologies, our customers are at the core of
                       everything we do. We understand that your success is
                       directly linked to our own, which is why we make it a
@@ -58,7 +58,7 @@ function Factor() {
                         <br />
                         <span className="text-ntl_orange"> People</span>
                       </p>
-                      <p className="text-base font-normal">
+                      <p className="text-base font-normal text-justify">
                         We take great pride in our team of amazing people who
                         are passionate, skilled, and dedicated to delivering
                         exceptional results. Our professionals possess deep
@@ -87,7 +87,7 @@ function Factor() {
                       <br />
                       <span className="text-ntl_orange"> Support</span>
                     </p>
-                    <p className="text-base font-normal">
+                    <p className="text-base font-normal text-justify">
                       Neocon Technologies recognize the importance of providing
                       great support to our clients. We understand that
                       technology implementations and ongoing operations can

@@ -40,7 +40,7 @@ function AboutUs() {
               We believe that we can handle all stock market
               <span className="text-ntl_orange"> IT solutions</span>
             </p>
-            <p className="text-base text-ntl_gray">
+            <p className="text-base text-ntl_gray text-justify">
               Neocon Technologies Limited is a leading provider of cutting-edge
               solutions in the field of Order Management Systems (OMS), fintech,
               and Enterprise Resource Planning (ERP) for the stock market. We
@@ -57,7 +57,7 @@ function AboutUs() {
                 Best <span className="text-ntl_orange"> fintech</span> solution
                 company in <span className="text-ntl_orange"> Bangladesh</span>
               </p>
-              <p className="text-base text-ntl_gray">
+              <p className="text-base text-ntl_gray text-justify">
                 As a pioneering fintech solution company in Bangladesh, we at
                 Neocon Technologies are proud to be at the forefront of the
                 digital transformation of the financial industry specializing in
@@ -93,7 +93,7 @@ function AboutUs() {
               <p>Mission</p>
               <BsFillArrowDownRightCircleFill className="my-auto mx-5" />
             </div>
-            <p className="text-base font-normal text-ntl_gray">
+            <p className="text-base font-normal text-ntl_gray text-justify">
               Neocon Technologies Limited mission is to revolutionize the
               financial industry by empowering businesses with cutting-edge
               fintech solutions. We are dedicated to delivering innovative
@@ -110,7 +110,7 @@ function AboutUs() {
               <p>Vision</p>
               <BsFillArrowDownRightCircleFill className="my-auto mx-5" />
             </div>
-            <p className="text-base font-normal text-ntl_gray">
+            <p className="text-base font-normal text-ntl_gray text-justify">
               Our vision at Neocon Technologies Limited is to be a global leader
               in providing fintech solutions for the stock market, OMS, ERP, and
               AI. We aim to spearhead technological advancements in the
