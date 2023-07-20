@@ -15,12 +15,13 @@ function Hero() {
                   Products
                 </p>
                 <p className="text-base text-ntl_gray">
-                  At Neocon Technologies Limited, we offer a comprehensive range
-                  of services tailored to meet the unique needs of our clients
-                  in the stock market industry. Our services are designed to
-                  empower businesses in the stock market sector to stay ahead of
-                  the competition and navigate the ever-evolving financial
-                  landscape.
+                  At Neocon Technologies Limited, we offer a range of innovative
+                  products tailored to meet the specific needs of businesses
+                  operating in the stock market industry. Our products,
+                  including Order Management Systems (OMS), fintech solutions,
+                  and Enterprise Resource Planning (ERP) systems, are designed
+                  to optimize trading activities, enhance operational
+                  efficiency, and drive growth.
                 </p>
               </div>
             </div>
@@ -28,7 +29,7 @@ function Hero() {
               <div className="p-5 xsm:px-0 xsm:pl-5">
                 <div>
                   <div className="flex flex-row text-ntl_orange">
-                    <p>All Services</p>
+                    <p>All Products</p>
                     <BsFillArrowDownRightCircleFill className="my-auto mx-2" />
                   </div>
                 </div>

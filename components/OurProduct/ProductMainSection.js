@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "./Hero";
 import AllProduct from "./AllProduct";
+import Contact from "../Homepage/Contact";
 
 
 function ProductMainSection() {
@@ -8,6 +9,7 @@ function ProductMainSection() {
     <>
       <Hero />
       <AllProduct />
+      <Contact/>
       
     </>
   );
