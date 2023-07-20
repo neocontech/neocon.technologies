@@ -1,15 +1,18 @@
-import Applayout from '@/components/Layout/Applayout'
-import CaseStudyMainsection from '@/components/OurCaseSudy/CaseStudyMainsection'
-import React from 'react'
+import Applayout from "@/components/Layout/Applayout";
+import CaseStudyMainsection from "@/components/OurCaseSudy/CaseStudyMainsection";
+import React from "react";
+import PageHead from "./PageHead";
 
 function casestudy() {
+  const pageTitle = "Neocon Technologies Limited / CaseStudy";
   return (
     <>
-    <Applayout>
-        <CaseStudyMainsection/>
-    </Applayout>
+      <PageHead title={pageTitle} />
+      <Applayout>
+        <CaseStudyMainsection />
+      </Applayout>
     </>
-  )
+  );
 }
 
-export default casestudy
+export default casestudy;
