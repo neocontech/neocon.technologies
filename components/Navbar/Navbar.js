@@ -68,7 +68,7 @@ function Navbar() {
                     />
                     <p className="pl-2 font-medium">Case Study</p>
                   </Link>
-                  <Link href="/contact-us" className="flex flex-row mx-5">
+                  <Link href="/contactus" className="flex flex-row mx-5">
                     <FiCircle
                       size={10}
                       className="my-auto text-xs text-ngl_orange"
@@ -92,7 +92,7 @@ function Navbar() {
                 <Link href="/casestudy" className="block my-3 mx-5">
                   <p className="font-medium">Case Study</p>
                 </Link>
-                <Link href="/contact-us" className="block my-3 mx-5">
+                <Link href="/contactus" className="block my-3 mx-5">
                   <p className="font-medium">Contact Us</p>
                 </Link>
               </div>
