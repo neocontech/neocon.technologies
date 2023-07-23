@@ -33,7 +33,7 @@ function AllCaseStudy() {
       const allTags = data.flatMap((caseStudy) => extractTagNames(caseStudy.tags));
       const uniqueTags = [...new Set(allTags)];
       setUniqueTags(uniqueTags);
-      console.log("Fetched data:", data);
+      // console.log("Fetched data:", data);
     } catch (error) {
       console.error("Error fetching case studies:", error);
     }
@@ -168,7 +168,7 @@ function AllCaseStudy() {
                 <div className="h-full">
                   <div className="flex flex-col p-5 rounded-3xl feedback_bg mx-5 xsm:mx-2 h-full">
                     <div className="flex justify-end">
-                      <Link href={`/casestudy/${casestudy.id}`}>
+                      <Link href={`/casestudy/${casestudy.name}`}>
                         <button className="flex flex-row pt-4">
                           <p className="mx-4">View More</p>
                           <BsFillArrowRightCircleFill className="my-auto text-2xl" />

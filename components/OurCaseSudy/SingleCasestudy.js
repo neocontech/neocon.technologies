@@ -58,10 +58,16 @@ import {
 } from "react-icons/bs";
 import Contact from "../Homepage/Contact";
 
-export default function SingleCasestudy({ casestudy, allCasestudys  }) {
-  const tabContainerRef = useRef(null);
+export default function SingleCasestudy({ casestudy }) {
   const [openTab, setOpenTab] = useState(1);
 
+  // Check if the casestudy data is available or show a loading state
+  if (!casestudy) {
+    return <div>Loading...</div>;
+  }
+  // Get the casestudy data based on the openTab value
+  const currentCasestudy = casestudy.find((item) => item.id === openTab);
+  const tabContainerRef = useRef(null);
   useEffect(() => {
     const containerWidth = tabContainerRef.current.clientWidth;
     const tabWidth = tabContainerRef.current.children[openTab - 1].clientWidth;
@@ -83,13 +89,26 @@ export default function SingleCasestudy({ casestudy, allCasestudys  }) {
           <div className="company_bg">
             <div className="px-5">
               <p className="text-base font-normal text-ntl_black pt-10">
-                Home/<span className="text-ntl_orange">{casestudy.name}</span>
+                Home/
+                <span className="text-ntl_orange">
+                  {currentCasestudy.name.length > 0
+                    ? currentCasestudy.title
+                    : ""}
+                </span>
               </p>
               <div className="pt-20 pb-5">
                 <p className="text-text_48 xsm:text-text_36 text-ntl_black font-semibold">
-                  {casestudy.name}
+                  {currentCasestudy.name.length > 0
+                    ? currentCasestudy.name
+                    : ""}
                 </p>
-                <p className="text-base text-ntl_gray">{casestudy.content}</p>
+
+                <div className="text-base text-ntl_gray"></div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: currentCasestudy.subDesc,
+                  }}
+                ></div>
               </div>
             </div>
             <div className="border-dashed border-t-2 border-t-ntl_gray_2">
@@ -97,23 +116,24 @@ export default function SingleCasestudy({ casestudy, allCasestudys  }) {
                 className="p-5 xsm:px-0 xsm:pl-5 flex flex-row overflow-x-scroll scrollbar-hide"
                 ref={tabContainerRef}
               >
-                {allCasestudys.map((s) => (
+                {/* Rendering the tabs dynamically based on the 'casestudy' array */}
+                {casestudy.map((item) => (
                   <Link
+                    key={item.id}
+                    href={`/casestudy/${item.name}`}
                     legacyBehavior
-                    className=""
-                    key={s.id}
-                    href={`/casestudys/${s.id}`}
                   >
                     <a
                       className={`flex flex-row min-w-max mr-4 ${
-                        s.id === casestudy.id
+                        item.id === openTab
                           ? "text-ntl_orange"
                           : "text-ntl_black"
                       }`}
-                      onClick={() => handleTabClick(s.id)}
+                      onClick={() => handleTabClick(item.id)}
                     >
-                      {s.name} for the stock market
-                      {s.id === casestudy.id ? (
+                      {item.title.length > 0 ? item.title : ""} for the
+                      stock market
+                      {item.id === openTab ? (
                         <BsFillArrowDownRightCircleFill className="my-auto mx-2" />
                       ) : (
                         <BsFillArrowRightCircleFill className="my-auto mx-2" />
@@ -125,50 +145,13 @@ export default function SingleCasestudy({ casestudy, allCasestudys  }) {
             </div>
           </div>
         </div>
-        <div className="pb-10">
-          {casestudy.details.map((details) => (
-            <div
-              key={details.id}
-              className={`w-full flex mb-10 ${
-                details.id % 2 === 1
-                  ? "flex-row xsm:flex-col sm:flex-col"
-                  : "flex-row-reverse xsm:flex-col sm:flex-col"
-              }`}
-            >
-              <div className="my-auto w-3/5 xsm:w-full sm:w-full">
-                <div
-                  className={`flex ${
-                    details.id % 2 === 0
-                      ? "justify-start xsm:pb-5 sm:pb-5"
-                      : "justify-end xsm:pb-5 sm:pb-5"
-                  }`}
-                >
-                  <div className="px-5 xsm:px-0 sm:px-0">
-                    <div>
-                      <div className="text-base font-normal text-ntl_black ">
-                        <p className=" text-text_41 xsm:text-2xl sm:text-2xl font-bold leading-none pb-5 w-3/5 xsm:w-full sm:w-full">
-                          Run Your Entire Web Presence In{" "}
-                          <span className="text-ntl_orange">
-                            {details.header}
-                          </span>
-                        </p>
-                        <p>{details.content}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="my-auto w-2/5 xsm:w-full sm:w-full">
-                <Image
-                  src={details.image}
-                  alt="service image"
-                  width={300}
-                  height={300}
-                  className="my-auto mx-auto rounded-lg w-auto h-auto 2xl:w-full xsm:w-full sm:w-full"
-                />
-              </div>
-            </div>
-          ))}
+        <div className="pb-10 leading-none">
+          <div
+          className="description-content"
+            dangerouslySetInnerHTML={{
+              __html: currentCasestudy.description,
+            }}
+          ></div>
         </div>
       </div>
       <Contact />
