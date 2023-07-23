@@ -1,41 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import Factor from "../Homepage/Factor";
-const services = [
-  {
-    id: 1,
-    name: "Fintech solutions ",
-    content: "Fintech solutions for the stock market content",
-  },
-  {
-    id: 2,
-    name: "ERP solutions ",
-    content: "ERP solutions for the stock market content",
-  },
-  {
-    id: 3,
-    name: "AI solutions ",
-    content: "AI solutions for the stock market content",
-  },
-  {
-    id: 4,
-    name: "Data Solutions ",
-    content: "Data Solutions for the stock market content",
-  },
-  {
-    id: 5,
-    name: "Cloud Solutions ",
-    content: "Cloud Solutions for the stock market content",
-  },
-  {
-    id: 6,
-    name: "Network Solutions ",
-    content: "Network Solutions for the stock market content",
-  },
-];
+
+async function fetchServices() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch services");
+  }
+  return response.json();
+}
+
+function getServiceName(service) {
+  // Check if service.name is an array and has elements
+  if (Array.isArray(service.name) && service.name.length > 0) {
+    return service.name[0].value;
+  }
+  // Default value if service.name is not an array or has no elements
+  return "N/A";
+}
 
 function AllService() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    async function getServices() {
+      try {
+        const data = await fetchServices();
+        setServices(data);
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      }
+    }
+    getServices();
+  }, []);
+  // console.log(services);
+
   return (
     <>
       <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
@@ -46,7 +48,7 @@ function AllService() {
                 <div className="service_bg h-full rounded-3xl">
                   <div className="p-6">
                     <div className="flex justify-end">
-                      <Link href={`/services/${service.id}`}>
+                      <Link href={`/services/${getServiceName(service)}`}>
                         <button className="flex flex-row">
                           <p className="mx-4">View More</p>
                           <BsFillArrowRightCircleFill className="my-auto text-2xl" />
@@ -55,7 +57,7 @@ function AllService() {
                     </div>
                     <div>
                       <p className="text-text_40 font-medium text-ntl_black mt-10 xsm:mb-4 sm:mb-4 w-4/5 leading-none">
-                        {service.name} for the stock market
+                        {getServiceName(service)} for the stock market
                       </p>
                     </div>
                   </div>
