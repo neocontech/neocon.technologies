@@ -1,35 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import Image from "next/image";
 import { BiSquareRounded } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
-import Oms from "../../public/assets/homepage/Oms.png";
-import Ai from "../../public/assets/homepage/Ai.png";
 import Link from "next/link";
-const CaseList = [
-  {
-    id: 1,
-    image: Oms,
-    name: "Order Management System [OMS]",
-  },
-  {
-    id: 2,
-    image: Ai,
-    name: "Artificial Intelligence Trade Bot",
-  },
-  {
-    id: 3,
-    image: Oms,
-    name: "Order Management System [OMS]",
-  },
-  {
-    id: 4,
-    image: Ai,
-    name: "Artificial Intelligence Trade Bot",
-  },
-];
+
 function CaseStudy() {
   const splideOptions = {
     type: "loop",
@@ -52,6 +29,28 @@ function CaseStudy() {
       },
     },
   };
+  const [caseStudies, setCaseStudies] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the backend API endpoint
+    const fetchCaseStudies = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/case-study`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch case studies");
+        }
+        const data = await response.json();
+        setCaseStudies(data);
+      } catch (error) {
+        console.error(error);
+        // Handle error (e.g., show an error message or retry)
+      }
+    };
+
+    fetchCaseStudies();
+  }, []);
   return (
     <>
       <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
@@ -67,7 +66,7 @@ function CaseStudy() {
               <div className="w-10/12 xsm:w-full sm:w-full">
                 <div>
                   <Splide options={splideOptions}>
-                    {CaseList.map((casestudy, index) => (
+                    {caseStudies.map((casestudy, index) => (
                       <SplideSlide key={index}>
                         <div className="h-full">
                           <div className="flex flex-col p-5 rounded-3xl feedback_bg mx-5 xsm:mx-2 h-full ">
@@ -83,7 +82,13 @@ function CaseStudy() {
                               </div>
                               <div className="w-3/12 xsm:w-full sm:w-full my-auto">
                                 <Image
-                                  src={casestudy.image}
+                                  src={
+                                    process.env.NEXT_PUBLIC_BACKEND_URL +
+                                    "/storage/" +
+                                    casestudy.image
+                                  }
+                                  width={300}
+                                  height={300}
                                   alt="case study .png"
                                   className="w-auto h-auto mb-0 pb-0 my-auto"
                                 />
