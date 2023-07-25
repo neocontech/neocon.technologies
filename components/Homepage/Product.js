@@ -15,12 +15,12 @@ async function fetchProducts() {
 }
 
 // Function to get the product name from the product object
-function getProductName(product) {
-  if (Array.isArray(product.name) && product.name.length > 0) {
-    return product.name[0].value;
-  }
-  return "N/A";
-}
+// function getProductName(product) {
+//   if (Array.isArray(product.name) && product.name.length > 0) {
+//     return product.name;
+//   }
+//   return "N/A";
+// }
 
 const splideOptions = {
   type: "loop",
@@ -92,7 +92,7 @@ function Product() {
               >
                 <div className="p-6">
                   <div className="flex justify-end">
-                    <Link legacyBehavior href={`/products/${getProductName(product)}`}>
+                    <Link legacyBehavior href={`/products/${product.name}`}>
                       <button className="flex flex-row">
                         <p
                           className={`mx-4 ${
