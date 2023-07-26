@@ -1,37 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Zubair from "../../public/assets/company/zubair-hasan.png";
-import Kalim from "../../public/assets/company/kalim-amzad.png";
-import Selim from "../../public/assets/company/Selim-Azad.png";
-const TeamList = [
-  {
-    id: 0,
-    name: "Zubair Hasan",
-    designation: "Director and Chief Technology Officer",
-    comment:
-      "Zubair Hasan, our Director, and Chief Technology Officer, is a dynamic technology enthusiast with a passion for Fintech, software development, server infrastructure, and cyber security. With over a decade of experience in the industry, Zubair has led numerous tech firms and international tech teams, consistently pushing the boundaries of innovation and technical excellence. His strategic vision and deep understanding of technology have been instrumental in driving Neocon Technologies' growth and success in the fiercely competitive technology landscape.",
-    image: Zubair,
-  },
-  {
-    id: 1,
-    name: "Md. Kalim Amzad Chy",
-    designation: "Director and Head of Analytics",
-    comment:
-      "Md. Kalim Amzad Chy, our Director and Head of Analytics, is a seasoned technology professional with a profound passion for data science. With years of experience in the industry, Kalim has established himself as a thought leader in the field of analytics. His dedication to technology and data science is reflected in his research papers published in top-tier journals worldwide. As the head of analytics at Neocon Technologies, Kalim is committed to utilizing his expertise to drive the company's growth and innovation, enabling our clients to make data-driven decisions in the stock market.",
-    image: Kalim,
-  },
-  {
-    id: 2,
-    name: "Muhammad Selim Azad",
-    designation: "Chief Executive Officer",
-    comment:
-      "Muhammad Selim Azad, our CEO, is a true visionary with a deep understanding of the industry and a passion for technology and management. With his expertise and a keen eye for innovation, Selim Azad has been instrumental in driving Neocon Technologies' success and growth. His infectious enthusiasm for technology and management fuels his drive to explore new and exciting ways to push the boundaries of what is possible. Under his leadership, Neocon Technologies is well-positioned to continue thriving and growing in the rapidly evolving technological landscape of the stock market.",
-    image: Selim,
-  },
-];
 
 function Team({ data }) {
-  // console.log(data);
+  console.log(data);
   return (
     <>
       <div>
@@ -49,7 +20,7 @@ function Team({ data }) {
               </p>
             </div>
             <div className="col-span-2 xsm:col-span-1 sm:col-span-1 border-2 border-t-0 border-b-0 border-dashed border-ntl_orange">
-              {TeamList.map((team, index) => {
+              {data.map((team, index) => {
                 return (
                   <div
                     key={index}
@@ -73,12 +44,14 @@ function Team({ data }) {
                           </p>
                           <div>
                             <div className="text-base font-normal text-ntl_black mb-3 text-justify">
-                              {/* <div
-                                dangerouslySetInnerHTML={{
-                                  __html: team.about,
-                                }}
-                              ></div> */}
-                              <p className="pb-2">{team.comment}</p>
+                              <div className="pb-2">
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: team.about,
+                                  }}
+                                ></div>
+                              </div>
+                              
                             </div>
                           </div>
 
@@ -94,12 +67,11 @@ function Team({ data }) {
                       }`}
                     >
                       <Image
-                        // src={
-                        //   process.env.NEXT_PUBLIC_BACKEND_URL +
-                        //   "/storage/" +
-                        //   team.image
-                        // }
-                        src={team.image}
+                        src={
+                          process.env.NEXT_PUBLIC_BACKEND_URL +
+                          "/storage/" +
+                          team.image
+                        }
                         alt="team image"
                         width={300}
                         height={300}

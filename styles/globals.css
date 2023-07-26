@@ -126,3 +126,16 @@
   background-position: center center;
   background-size: cover;
 }
+
+
+/* Add this CSS to your stylesheet or component's styles */
+@media (max-width: 640px) {
+  /* Styles for screen width up to 640px (typical mobile devices) */
+  .description-content {
+    /* Add your mobile-responsive styles here */
+    /* For example, you can set font size, padding, or margins specifically for mobile devices */
+    font-size: 14px;
+    padding: 10px;
+    margin: 0;
+  }
+}

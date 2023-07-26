@@ -50,7 +50,6 @@
 // }
 // export default SingleProduct;
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   BsFillArrowRightCircleFill,
@@ -58,9 +57,71 @@ import {
 } from "react-icons/bs";
 import Contact from "../Homepage/Contact";
 
-export default function SingleProduct({ product, allProducts  }) {
-  const tabContainerRef = useRef(null);
+const SingleProduct = ({ product }) => {
+  console.log(product);
   const [openTab, setOpenTab] = useState(1);
+  const [formattedContent, setFormattedContent] = useState("");
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
+  const currentProduct = product.find((item) => item.id === openTab);
+
+  useEffect(() => {
+    const fetchImagesAndFormatContent = async () => {
+      const blobImageRegex = /blob:\s*([^\s"]+)/g;
+      const contentWithFetchedImages = await Promise.all(
+        currentProduct.description.match(blobImageRegex).map(async (match) => {
+          const imageUrl = await fetchBlobImageAsDataUrl(match);
+          return imageUrl || match;
+        })
+      );
+
+      let updatedContent = currentProduct.description;
+      contentWithFetchedImages.forEach((imageUrl, index) => {
+        updatedContent = updatedContent.replace(new RegExp(contentWithFetchedImages[index], "g"), imageUrl);
+      });
+
+      setFormattedContent(updatedContent);
+    };
+
+    fetchImagesAndFormatContent();
+  }, [currentProduct.description]);
+
+  const fetchBlobImageAsDataUrl = async (blobUrl) => {
+    try {
+      // Convert blob URL to Data URL using createObjectURL
+      const response = await fetch(blobUrl);
+      if (!response.ok) {
+        throw new Error("Failed to fetch blob image.");
+      }
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+      return imageUrl;
+    } catch (error) {
+      console.error("Error fetching blob image:", error);
+      return null; // Return null if there's an error fetching the image
+    }
+  };
+
+  const formatTableRowsForMobile = (content) => {
+    if (window.innerWidth < 640) {
+      // Replace <table> with nested <div> elements for mobile view
+      const parser = new DOMParser();
+      const parsedContent = parser.parseFromString(content, "text/html");
+      const rows = Array.from(parsedContent.querySelectorAll("tr")).map((row, rowIndex) => {
+        const cells = Array.from(row.querySelectorAll("td")).map((cell, colIndex) => (
+          <div key={`col_${rowIndex}_${colIndex}`} dangerouslySetInnerHTML={{ __html: cell.innerHTML }} />
+        ));
+        return <div key={`row_${rowIndex}`} className="flex flex-col">{cells}</div>;
+      });
+      return <div>{rows}</div>;
+    }
+    return <table dangerouslySetInnerHTML={{ __html: content }} />; // Return original table structure for desktop view
+  };
+
+  const tabContainerRef = useRef(null);
 
   useEffect(() => {
     const containerWidth = tabContainerRef.current.clientWidth;
@@ -73,9 +134,11 @@ export default function SingleProduct({ product, allProducts  }) {
       behavior: "smooth",
     });
   }, [openTab]);
+
   const handleTabClick = (tabNumber) => {
     setOpenTab(tabNumber);
   };
+
   return (
     <>
       <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
@@ -83,13 +146,23 @@ export default function SingleProduct({ product, allProducts  }) {
           <div className="company_bg">
             <div className="px-5">
               <p className="text-base font-normal text-ntl_black pt-10">
-                Home/<span className="text-ntl_orange">{product.name}</span>
+                Home/
+                <span className="text-ntl_orange">
+                  {currentProduct.name.length > 0
+                    ? currentProduct.name[0].value
+                    : ""}
+                </span>
               </p>
               <div className="pt-20 pb-5">
                 <p className="text-text_48 xsm:text-text_36 text-ntl_black font-semibold">
-                  {product.name}
+                  {currentProduct.name.length > 0
+                    ? currentProduct.name[0].value
+                    : ""}
                 </p>
-                <p className="text-base text-ntl_gray">{product.content}</p>
+                <div className="text-base text-ntl_gray"></div>
+                <div>
+                  <div>{currentProduct.subDesc}</div>
+                </div>
               </div>
             </div>
             <div className="border-dashed border-t-2 border-t-ntl_gray_2">
@@ -97,23 +170,23 @@ export default function SingleProduct({ product, allProducts  }) {
                 className="p-5 xsm:px-0 xsm:pl-5 flex flex-row overflow-x-scroll scrollbar-hide"
                 ref={tabContainerRef}
               >
-                {allProducts.map((s) => (
+                {product.map((item) => (
                   <Link
+                    key={item.id}
+                    href={`/products/${item.name[0].value}`}
                     legacyBehavior
-                    className=""
-                    key={s.id}
-                    href={`/products/${s.id}`}
                   >
                     <a
                       className={`flex flex-row min-w-max mr-4 ${
-                        s.id === product.id
+                        item.id === openTab
                           ? "text-ntl_orange"
                           : "text-ntl_black"
                       }`}
-                      onClick={() => handleTabClick(s.id)}
+                      onClick={() => handleTabClick(item.id)}
                     >
-                      {s.name} for the stock market
-                      {s.id === product.id ? (
+                      {item.name.length > 0 ? item.name[0].value : ""} for the
+                      stock market
+                      {item.id === openTab ? (
                         <BsFillArrowDownRightCircleFill className="my-auto mx-2" />
                       ) : (
                         <BsFillArrowRightCircleFill className="my-auto mx-2" />
@@ -125,53 +198,24 @@ export default function SingleProduct({ product, allProducts  }) {
             </div>
           </div>
         </div>
-        <div className="pb-10">
-          {product.details.map((details) => (
-            <div
-              key={details.id}
-              className={`w-full flex mb-10 ${
-                details.id % 2 === 1
-                  ? "flex-row xsm:flex-col sm:flex-col"
-                  : "flex-row-reverse xsm:flex-col sm:flex-col"
-              }`}
-            >
-              <div className="my-auto w-3/5 xsm:w-full sm:w-full">
-                <div
-                  className={`flex ${
-                    details.id % 2 === 0
-                      ? "justify-start xsm:pb-5 sm:pb-5"
-                      : "justify-end xsm:pb-5 sm:pb-5"
-                  }`}
-                >
-                  <div className="px-5 xsm:px-0 sm:px-0">
-                    <div>
-                      <div className="text-base font-normal text-ntl_black ">
-                        <p className=" text-text_41 xsm:text-2xl sm:text-2xl font-bold leading-none pb-5 w-3/5 xsm:w-full sm:w-full">
-                          Run Your Entire Web Presence In{" "}
-                          <span className="text-ntl_orange">
-                            {details.header}
-                          </span>
-                        </p>
-                        <p>{details.content}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="my-auto w-2/5 xsm:w-full sm:w-full">
-                <Image
-                  src={details.image}
-                  alt="service image"
-                  width={300}
-                  height={300}
-                  className="my-auto mx-auto rounded-lg w-auto h-auto 2xl:w-full xsm:w-full sm:w-full"
-                />
-              </div>
+        <div className="pb-10 leading-none">
+          <div className="hidden xsm:block sm:block">
+            <div>
+              {/* Render the table content as nested divs for mobile view */}
+              {formatTableRowsForMobile(formattedContent)}
             </div>
-          ))}
+          </div>
+          <div className="block xsm:hidden sm:hidden">
+            <div>
+              {/* Render the table content as rows for desktop view */}
+              <div dangerouslySetInnerHTML={{ __html: formattedContent }} />
+            </div>
+          </div>
         </div>
       </div>
       <Contact />
     </>
   );
-}
+};
+
+export default SingleProduct;

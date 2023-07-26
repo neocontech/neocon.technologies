@@ -1,44 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Oms from "../../public/assets/homepage/Oms.png";
-import Ai from "../../public/assets/homepage/Ai.png";
-import {
-  BsFillArrowRightCircleFill,
-  BsFillArrowDownRightCircleFill,
-} from "react-icons/bs";
+import { BsFillArrowRightCircleFill, BsFillArrowDownRightCircleFill } from "react-icons/bs";
 import { FaFilter } from "react-icons/fa";
 import Link from "next/link";
-
-const CaseList = [
-  {
-    id: 1,
-    image: Oms,
-    name: "Order Management System [OMS]1",
-    tag: "oms",
-  },
-  {
-    id: 2,
-    image: Ai,
-    name: "Artificial Intelligence Trade Bot1",
-    tag: "ai",
-  },
-  {
-    id: 3,
-    image: Oms,
-    name: "Order Management System [OMS]2",
-    tag: "oms2",
-  },
-  {
-    id: 4,
-    image: Ai,
-    name: "Artificial Intelligence Trade Bot2",
-    tag: "ai2",
-  },
-];
 
 function AllCaseStudy() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [showFilterButton, setShowFilterButton] = useState(false);
+  const [caseList, setCaseList] = useState([]);
+  const [uniqueTags, setUniqueTags] = useState([]);
+
+  // Helper function to extract tag names from the JSON string
+  const extractTagNames = (tags) => {
+    try {
+      const tagsArray = JSON.parse(tags);
+      return tagsArray.map((tagObj) => tagObj.value);
+    } catch (error) {
+      console.error("Error parsing tags:", error);
+      return [];
+    }
+  };
+
+  // Fetch data from the API using async/await
+  const fetchCaseStudies = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/case-study`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setCaseList(data);
+      const allTags = data.flatMap((caseStudy) => extractTagNames(caseStudy.tags));
+      const uniqueTags = [...new Set(allTags)];
+      setUniqueTags(uniqueTags);
+      // console.log("Fetched data:", data);
+    } catch (error) {
+      console.error("Error fetching case studies:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCaseStudies();
+  }, []); // Fetch data only once when the component mounts
 
   const handleFilterClick = (tag) => {
     setActiveFilter(tag);
@@ -46,7 +49,7 @@ function AllCaseStudy() {
 
   const handleFilterButtonClick = () => {
     setShowFilterButton((prevValue) => !prevValue);
-  }; // Step 3
+  };
 
   const getButtonStyle = (tag) => {
     if (tag === activeFilter) {
@@ -66,12 +69,10 @@ function AllCaseStudy() {
     if (activeFilter === "all") {
       return true;
     }
-    return caseStudy.tag === activeFilter;
+    return extractTagNames(caseStudy.tags).includes(activeFilter);
   };
 
-  const filteredCaseList = CaseList.filter(filterCaseStudies);
-
-  const uniqueTags = [...new Set(CaseList.map((caseStudy) => caseStudy.tag))];
+  const filteredCaseList = caseList.filter(filterCaseStudies);
 
   return (
     <>
@@ -95,9 +96,7 @@ function AllCaseStudy() {
             {showFilterButton && (
               <div className="flex justify-center xsm:flex-col sm:flex-col pb-10 overflow-x-scroll scrollbar-hide">
                 <button
-                  className={`mx-2 px-6 py-2 rounded-lg min-w-max  ${getButtonStyle(
-                    "all"
-                  )}`}
+                  className={`mx-2 px-6 py-2 rounded-lg min-w-max  ${getButtonStyle("all")}`}
                   onClick={() => handleFilterClick("all")}
                 >
                   <div className="flex justify-between items-center">
@@ -112,13 +111,11 @@ function AllCaseStudy() {
                 {uniqueTags.map((tag) => (
                   <button
                     key={tag}
-                    className={`mx-2 px-6 py-2 rounded-lg min-w-fit  ${getButtonStyle(
-                      tag
-                    )}`}
+                    className={`mx-2 px-6 py-2 rounded-lg min-w-fit  ${getButtonStyle(tag)}`}
                     onClick={() => handleFilterClick(tag)}
                   >
                     <div className="flex justify-between items-center">
-                      <p className="mx-2">{tag.toUpperCase()}</p>
+                      <p className="mx-2">{tag}</p>
                       {getArrowIconStyle(tag) === "text-ntl_orange" ? (
                         <BsFillArrowDownRightCircleFill className="text-2xl" />
                       ) : (
@@ -131,41 +128,37 @@ function AllCaseStudy() {
             )}
           </div>
           <div className="block xsm:hidden sm:hidden">
-          <div className="flex justify-center xsm:flex-col sm:flex-col pb-10 overflow-x-scroll scrollbar-hide">
-            <button
-              className={`mx-2 px-6 py-2 rounded-lg min-w-max  ${getButtonStyle(
-                "all"
-              )}`}
-              onClick={() => handleFilterClick("all")}
-            >
-              <div className="flex flex-row items-center">
-                <p className="mx-2">All</p>
-                {getArrowIconStyle("all") === "text-ntl_orange" ? (
-                  <BsFillArrowDownRightCircleFill className="text-2xl" />
-                ) : (
-                  <BsFillArrowRightCircleFill className="text-2xl" />
-                )}
-              </div>
-            </button>
-            {uniqueTags.map((tag) => (
+            <div className="flex justify-center xsm:flex-col sm:flex-col pb-10 overflow-x-scroll scrollbar-hide">
               <button
-                key={tag}
-                className={`mx-2 px-6 py-2 rounded-lg min-w-fit  ${getButtonStyle(
-                  tag
-                )}`}
-                onClick={() => handleFilterClick(tag)}
+                className={`mx-2 px-6 py-2 rounded-lg min-w-max  ${getButtonStyle("all")}`}
+                onClick={() => handleFilterClick("all")}
               >
                 <div className="flex flex-row items-center">
-                  <p className="mx-2">{tag.toUpperCase()}</p>
-                  {getArrowIconStyle(tag) === "text-ntl_orange" ? (
+                  <p className="mx-2">All</p>
+                  {getArrowIconStyle("all") === "text-ntl_orange" ? (
                     <BsFillArrowDownRightCircleFill className="text-2xl" />
                   ) : (
                     <BsFillArrowRightCircleFill className="text-2xl" />
                   )}
                 </div>
               </button>
-            ))}
-          </div>
+              {uniqueTags.map((tag) => (
+                <button
+                  key={tag}
+                  className={`mx-2 px-6 py-2 rounded-lg min-w-fit  ${getButtonStyle(tag)}`}
+                  onClick={() => handleFilterClick(tag)}
+                >
+                  <div className="flex flex-row items-center">
+                    <p className="mx-2">{tag}</p>
+                    {getArrowIconStyle(tag) === "text-ntl_orange" ? (
+                      <BsFillArrowDownRightCircleFill className="text-2xl" />
+                    ) : (
+                      <BsFillArrowRightCircleFill className="text-2xl" />
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Case Study Grid */}
@@ -175,7 +168,7 @@ function AllCaseStudy() {
                 <div className="h-full">
                   <div className="flex flex-col p-5 rounded-3xl feedback_bg mx-5 xsm:mx-2 h-full">
                     <div className="flex justify-end">
-                      <Link href={`/casestudy/${casestudy.id}`}>
+                      <Link href={`/casestudy/${casestudy.name}`}>
                         <button className="flex flex-row pt-4">
                           <p className="mx-4">View More</p>
                           <BsFillArrowRightCircleFill className="my-auto text-2xl" />
@@ -188,7 +181,13 @@ function AllCaseStudy() {
                       </div>
                       <div className="w-3/12 xsm:w-full sm:w-full my-auto">
                         <Image
-                          src={casestudy.image}
+                          src={
+                            process.env.NEXT_PUBLIC_BACKEND_URL +
+                            "/storage/" +
+                            casestudy.image
+                          }
+                          width={300}
+                          height={300}
                           alt="case study .png"
                           className="w-auto h-auto mb-0 pb-0 my-auto"
                         />

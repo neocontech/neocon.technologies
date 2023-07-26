@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
@@ -7,38 +8,57 @@ import { BiSquareRounded } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
-const Service = [
-  {
-    id: 1,
-    name: "Fintech solutions for the stock market",
-  },
-  {
-    id: 2,
-    name: "ERP solutions for the stock market",
-  },
-  {
-    id: 3,
-    name: "AI solutions for the stock market",
-  },
-  {
-    id: 4,
-    name: "Data Solutions for the stock market",
-  },
-  {
-    id: 5,
-    name: "Cloud Solutionss for the stock market",
-  },
-  {
-    id: 6,
-    name: "Network Solutions for the stock market",
-  },
-];
+// const Service = [
+//   {
+//     id: 1,
+//     name: "Fintech solutions for the stock market",
+//   },
+//   {
+//     id: 2,
+//     name: "ERP solutions for the stock market",
+//   },
+//   {
+//     id: 3,
+//     name: "AI solutions for the stock market",
+//   },
+//   {
+//     id: 4,
+//     name: "Data Solutions for the stock market",
+//   },
+//   {
+//     id: 5,
+//     name: "Cloud Solutionss for the stock market",
+//   },
+//   {
+//     id: 6,
+//     name: "Network Solutions for the stock market",
+//   },
+// ];
+async function fetchServices() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/service`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch services");
+  }
+  return response.json();
+}
+
+function getServiceName(service) {
+  // Check if service.name is an array and has elements
+  if (Array.isArray(service.name) && service.name.length > 0) {
+    return service.name[0].value;
+  }
+  // Default value if service.name is not an array or has no elements
+  return "N/A";
+}
 
 function OurService() {
   const splideRef = useRef(null);
   const [visibleSlides, setVisibleSlides] = useState(5);
   const [perPage, setPerPage] = useState(5);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -91,6 +111,18 @@ function OurService() {
     },
   };
 
+  useEffect(() => {
+    async function getServices() {
+      try {
+        const data = await fetchServices();
+        setServices(data);
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      }
+    }
+    getServices();
+  }, []);
+
   return (
     <div className="px-10 2xl:px-80 xsm:px-5 sm:px-5">
       <div className="pb-10">
@@ -113,7 +145,7 @@ function OurService() {
             ref={splideRef}
             onMoved={(splide) => setActiveCardIndex(splide.index)}
           >
-            {Service.map((service, index) => (
+            {services.map((service, index) => (
               <SplideSlide key={index}>
                 <div
                   className={`${
@@ -124,10 +156,12 @@ function OurService() {
                 >
                   <div className="">
                     <div className="flex justify-end">
-                      <button className="flex flex-row pr-10 pt-4">
-                        <p className="mx-4">View More</p>
-                        <BsFillArrowRightCircleFill className="my-auto text-2xl" />
-                      </button>
+                      <Link href={`/services/${getServiceName(service)}`}>
+                        <button className="flex flex-row pr-10 pt-4">
+                          <p className="mx-4">View More</p>
+                          <BsFillArrowRightCircleFill className="my-auto text-2xl" />
+                        </button>
+                      </Link>
                     </div>
                     <div className="relative">
                       <div className="absolute top-40 bottom-0 right-0 z-20">
@@ -139,7 +173,7 @@ function OurService() {
                       </div>
                       <div className="z-30 absolute top-20 xsm:top-6 sm:top-6 bottom-0">
                         <p className="text-text_40 font-medium leading-tight px-10 xsm:px-0 xsm:pl-10 xsm:pr-16">
-                          {service.name}
+                          {getServiceName(service)} for the stock market
                         </p>
                       </div>
                     </div>

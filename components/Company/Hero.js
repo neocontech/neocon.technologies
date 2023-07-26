@@ -11,6 +11,8 @@ import Team from "./Team";
 
 function Hero() {
   const [openTab, setOpenTab] = useState(1);
+  const [director, setDirector] = useState([]);
+  const [team, setTeam] = useState([]);
   const tabContainerRef = useRef(null);
   useEffect(() => {
     const containerWidth = tabContainerRef.current.clientWidth;
@@ -25,6 +27,33 @@ function Hero() {
   const handleTabClick = (tabNumber) => {
     setOpenTab(tabNumber);
   };
+  async function fetchEmp() {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/employee`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      setDirector(
+        data.filter((employee) => employee.type === "director")
+      );
+      setTeam(
+        data.filter((employee) => employee.type === "team")
+      );
+    } catch (error) {
+      console.error("Error fetching employee data:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchEmp();
+  }, []);
 
   return (
     <>
@@ -132,10 +161,10 @@ function Hero() {
             <AboutUs />
           </div>
           <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-            <Director/>
+            <Director data={director} />
           </div>
           <div className={openTab === 3 ? "block" : "hidden"} id="link3">
-            <Team/>
+            <Team data={team} />
           </div>
         </div>
       </div>
