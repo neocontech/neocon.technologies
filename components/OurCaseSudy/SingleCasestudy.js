@@ -60,6 +60,7 @@ import Contact from "../Homepage/Contact";
 
 export default function SingleCasestudy({ casestudy }) {
   const [openTab, setOpenTab] = useState(1);
+  const [formattedContent, setFormattedContent] = useState("");
 
   // Check if the casestudy data is available or show a loading state
   if (!casestudy) {
@@ -67,6 +68,72 @@ export default function SingleCasestudy({ casestudy }) {
   }
   // Get the casestudy data based on the openTab value
   const currentCasestudy = casestudy.find((item) => item.id === openTab);
+  useEffect(() => {
+    const fetchImagesAndFormatContent = async () => {
+      const blobImageRegex = /blob:\s*([^\s"]+)/g;
+      const contentWithFetchedImages = await Promise.all(
+        currentCasestudy.description.match(blobImageRegex).map(async (match) => {
+          const imageUrl = await fetchBlobImageAsDataUrl(match);
+          return imageUrl || match;
+        })
+      );
+
+      let updatedContent = currentCasestudy.description;
+      contentWithFetchedImages.forEach((imageUrl, index) => {
+        updatedContent = updatedContent.replace(
+          new RegExp(contentWithFetchedImages[index], "g"),
+          imageUrl
+        );
+      });
+
+      setFormattedContent(updatedContent);
+    };
+
+    fetchImagesAndFormatContent();
+  }, [currentCasestudy.description]);
+
+  const fetchBlobImageAsDataUrl = async (blobUrl) => {
+    try {
+      // Convert blob URL to Data URL using createObjectURL
+      const response = await fetch(blobUrl);
+      if (!response.ok) {
+        throw new Error("Failed to fetch blob image.");
+      }
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+      return imageUrl;
+    } catch (error) {
+      console.error("Error fetching blob image:", error);
+      return null; // Return null if there's an error fetching the image
+    }
+  };
+
+  const formatTableRowsForMobile = (content) => {
+    if (window.innerWidth < 640) {
+      // Replace <table> with nested <div> elements for mobile view
+      const parser = new DOMParser();
+      const parsedContent = parser.parseFromString(content, "text/html");
+      const rows = Array.from(parsedContent.querySelectorAll("tr")).map(
+        (row, rowIndex) => {
+          const cells = Array.from(row.querySelectorAll("td")).map(
+            (cell, colIndex) => (
+              <div
+                key={`col_${rowIndex}_${colIndex}`}
+                dangerouslySetInnerHTML={{ __html: cell.innerHTML }}
+              />
+            )
+          );
+          return (
+            <div key={`row_${rowIndex}`} className="flex flex-col">
+              {cells}
+            </div>
+          );
+        }
+      );
+      return <div>{rows}</div>;
+    }
+    return <table dangerouslySetInnerHTML={{ __html: content }} />; // Return original table structure for desktop view
+  };
   const tabContainerRef = useRef(null);
   useEffect(() => {
     const containerWidth = tabContainerRef.current.clientWidth;
@@ -131,8 +198,8 @@ export default function SingleCasestudy({ casestudy }) {
                       }`}
                       onClick={() => handleTabClick(item.id)}
                     >
-                      {item.title.length > 0 ? item.title : ""} for the
-                      stock market
+                      {item.title.length > 0 ? item.title : ""} for the stock
+                      market
                       {item.id === openTab ? (
                         <BsFillArrowDownRightCircleFill className="my-auto mx-2" />
                       ) : (
@@ -145,13 +212,27 @@ export default function SingleCasestudy({ casestudy }) {
             </div>
           </div>
         </div>
-        <div className="pb-10 leading-none">
+        {/* <div className="pb-10 leading-none">
           <div
           className="description-content"
             dangerouslySetInnerHTML={{
               __html: currentCasestudy.description,
             }}
           ></div>
+        </div> */}
+        <div className="pb-10 leading-none">
+          <div className="hidden xsm:block sm:block">
+            <div>
+              {/* Render the table content as nested divs for mobile view */}
+              {formatTableRowsForMobile(formattedContent)}
+            </div>
+          </div>
+          <div className="block xsm:hidden sm:hidden">
+            <div>
+              {/* Render the table content as rows for desktop view */}
+              <div dangerouslySetInnerHTML={{ __html: formattedContent }} />
+            </div>
+          </div>
         </div>
       </div>
       <Contact />

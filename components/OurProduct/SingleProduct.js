@@ -80,10 +80,7 @@ const SingleProduct = ({ product }) => {
 
       let updatedContent = currentProduct.description;
       contentWithFetchedImages.forEach((imageUrl, index) => {
-        updatedContent = updatedContent.replace(
-          new RegExp(contentWithFetchedImages[index], "g"),
-          imageUrl
-        );
+        updatedContent = updatedContent.replace(new RegExp(contentWithFetchedImages[index], "g"), imageUrl);
       });
 
       setFormattedContent(updatedContent);
@@ -113,23 +110,12 @@ const SingleProduct = ({ product }) => {
       // Replace <table> with nested <div> elements for mobile view
       const parser = new DOMParser();
       const parsedContent = parser.parseFromString(content, "text/html");
-      const rows = Array.from(parsedContent.querySelectorAll("tr")).map(
-        (row, rowIndex) => {
-          const cells = Array.from(row.querySelectorAll("td")).map(
-            (cell, colIndex) => (
-              <div
-                key={`col_${rowIndex}_${colIndex}`}
-                dangerouslySetInnerHTML={{ __html: cell.innerHTML }}
-              />
-            )
-          );
-          return (
-            <div key={`row_${rowIndex}`} className="flex flex-col">
-              {cells}
-            </div>
-          );
-        }
-      );
+      const rows = Array.from(parsedContent.querySelectorAll("tr")).map((row, rowIndex) => {
+        const cells = Array.from(row.querySelectorAll("td")).map((cell, colIndex) => (
+          <div key={`col_${rowIndex}_${colIndex}`} dangerouslySetInnerHTML={{ __html: cell.innerHTML }} />
+        ));
+        return <div key={`row_${rowIndex}`} className="flex flex-col">{cells}</div>;
+      });
       return <div>{rows}</div>;
     }
     return <table dangerouslySetInnerHTML={{ __html: content }} />; // Return original table structure for desktop view
